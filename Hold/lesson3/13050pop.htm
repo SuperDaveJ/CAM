@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Popup Information</title>
+<link href="../cdcpopup.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+<script type="text/JavaScript">
+
+var gDef = getQueryValue('popterm')
+var arrPopup = new Array();
+var numTern = 7;
+for (var i=0; i<numTern; i++) {
+	arrPopup[i] = "";
+}
+
+arrPopup[0]  = "<p class='popupH'>Healthy Communities</p><p>CDC’s primary goal for healthy communities is to increase the number of communities that protect health and safety and prevent illness and injury. CDC also strives to improve social determinants of health among communities with excess burden and risk. </p><p>CDC promotes safe and high-quality air, water, food, and waste disposal and safety from toxic, infectious, and other hazards in communities.  CDC also strives to understand and reduce the negative health consequences of climate change.</p><p>To increase the number of healthy communities, CDC supports:</p><p><ul><li>The design and development of built environments that promote physical and mental health by encouraging healthy behaviors, quality of life, and social connectedness.</li><li>A robust, sustainable capacity to provide access to and ensure receipt of essential public health, health promotion, health education, and medical services.</li></ul></p>";
+
+arrPopup[1]  = "<p class='popupH'>Healthy Homes </p><p>The CDC’s primary goal for healthy homes is to protect and promote health through safe and healthy home environments. </p><p>To ensure healthy homes, CDC promotes:</p><p><ul><li>Homes that are safe, healthy, and accessible.</li><li>Adoption of behaviors that keep people healthy and safe in their homes.</li><li>The availability of healthy, safe, and accessible homes. </li></ul></p>";
+
+arrPopup[2]  = "<p class='popupH'>Healthy Schools </p><p>CDC’s primary goal for healthy schools is to increase the number that protect and promote the health, safety, and development of all students and staff. </p><p>CDC strives to improve the health and safety of students and school staff by implementing comprehensive and coordinated instruction, programs, policies, and services that involve families and the community.</p><p>In an effort to increase the number of healthy schools, CDC supports:</p><p><ul><li>Safe, healthy, and accessible physical environments in schools.</li><li>Supportive social, psychological, and emotional environments in schools.</li></ul></p>";
+
+arrPopup[3]  = "<p class='popupH'>Healthy Workplaces</p><p>CDC’s primary goal for healthy workplaces is to promote and protect the health and safety of people who work by preventing workplace-related fatalities, illnesses, injuries, and personal risks. CDC strives to prevent work-related deaths, injuries, and illnesses.</p><p>CDC also works to improve the adoption of comprehensive workplace programs, policies, and practices that protect employees from work-related risks and promoting safe and healthful lifestyles for workers and their families.</p>";
+
+arrPopup[4]  = "<p class='popupH'>Healthy Healthcare Settings</p><p>CDC’s primary goal for healthy healthcare settings is to increase the number that provide safe, effective, and satisfying patient care.</p><p>CDC reaches this goal by preventing adverse events in patients and healthcare workers in healthcare settings.</p><p>To increase the number of healthy healthcare settings, CDC promotes:</p><p><ul><li>The delivery of quality prevention and screening services in healthcare settings.</li><li>Compliance with evidence-based guidelines for preventing, identifying, and managing disease in healthcare settings.</li><li>Health, safety, and accessibility in healthcare settings.</li><li>Patient-centered clinical care and prevention services in healthcare settings.</li></ul></p>";
+
+arrPopup[5]  = "<p class='popupH'>Healthy Institutions</p><p>CDC’s primary goal for healthy institutions is to increase the number that provide safe, healthy, and equitable environments for their residents, clients, or inmates.</p><p>CDC works to prevent infectious and chronic diseases, injuries, and violence among people in institutions. </p><p>In an effort to increase the number of healthy institutions, CDC promotes:</p><p><ul><li>Institutional settings that are designed, constructed, and modified to be hazard free and promote health.</li><li>The delivery of health promotion programs in institutions.</li><li>The continuity of patient care across institutional public health, medical systems, and community health systems.</li></ul></p>";
+
+arrPopup[6]  = "<p class='popupH'>Healthy Travel and Recreation</p><p>CDC’s primary goal for healthy travel and recreation facilities is to ensure that travel and recreation environments enhance health and prevent illness and injury. CDC promotes healthy, safe, and accessible travel, transportation, and recreation.</p><p>To ensure healthy travel and recreation facilities, CDC strives to reduce:</p><p><ul><li>Injury risks associated with travel, transportation, and recreation.</li><li>Exposure to infectious and environmental hazards associated with travel, transportation, and recreation.</li></ul></p>";
+
+
+</script>
+</head>
+
+<body onload="MM_preloadImages('../sysimages/close_2.jpg');">
+<div id="noGraphicPopupText">
+  <p class="popupH"></p>
+  <script language="javascript" type="text/javascript" >
+	document.getElementById('noGraphicPopupText').innerHTML=arrPopup[gDef-1];
+</script>
+  <div class="CloseButton">
+    <div align="center"><a href="javascript:self.close();" onClick="javascript:self.close();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CButton','','../sysimages/close_2.jpg',1)"><img src="../sysimages/close_0.jpg" alt="Close Button" name="CButton" width="82" height="37" border="0" id="CButton" /></a></div>
+  </div>
+</div>
+</body>
+</html>

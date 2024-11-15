@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Centralized Asset Management</title>
+<link rel="stylesheet" type="text/css" href="../mod_summary.css" title = "modCSS">
+
+<script language="JavaScript" type="text/JavaScript" src="../scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/afit_module01.js"></script>
+
+<script language="javascript">
+<!--
+
+blnLastPage = true;
+
+if (typeof(blnTut) == "undefined")  {
+	initializePage();
+}
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+}
+
+function onpage() {
+}
+
+MM_reloadPage(true);
+
+function findNext() {
+	var NextPage = "../neo_m01_mainmenu.htm"
+	goNext (NextPage);
+}
+function findBack() {
+	var BackPage = "11040.htm"
+	goNext (BackPage);
+}
+function onpage() {
+	//document.getElementById("Prompt").style.top = "539px";
+}
+
+//-->
+audioOn = 1;
+
+function audioMute() {
+
+	if (audioOn == 0) {
+		MM_showHideLayers('guider5','','show');
+		MM_controlShockwave('FlaAudio4','','Play');	
+		audioOn = 1;
+	} else {
+		MM_controlShockwave('FlaAudio4','','StopPlay');
+		MM_showHideLayers('guider5','','hide');
+		audioOn = 0;
+	}
+}
+
+function MM_controlShockwave(objStr,x,cmdName,frameNum) { //v3.0
+  var obj=MM_findObj(objStr);
+  if (obj) eval('obj.'+cmdName+'('+((cmdName=='GotoFrame')?frameNum:'')+')');
+}
+//-->
+
+</script>
+
+
+
+<script src="../scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+
+<body onLoad="onpage();MM_preloadImages('images/main-menu_2.jpg','images/exit_2.jpg')" onUnload="if (closing) exitCourse(false)">
+
+<div id="modResource">
+  <ul>
+    <li><strong><a href="resources/CAM_Course_Objectives.pdf" target="_blank">CAM Course Objectives
+    </a></strong></li>
+      <li><a href="https://acc.dau.mil/CommunityBrowser.aspx?id=32785" target="_blank">eLog21 Fact Sheet -  Centralized Asset Management (CAM) [ACC]</a></li>
+      </ul>
+</div>
+
+<div id="SumText">
+  <p class="topicH">Lesson Summary</p>
+  <p><strong>In this lesson you have learned about the  importance of monitoring performance. You have looked at health assessments,  reporting of CAM performance monitoring, and the linkages to the CSAF WSR.  Lastly, you became aware of the key stakeholders in the processes who have  critical responsibilities as they fulfill their role.</strong></p>
+</div>
+<div id="Mainmenu">
+	<a href="javascript:toMenu(false)"  onMouseOver="MM_swapImage('btnmain','','images/main-menu_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img id="btnmain" name="btnmain" src="images/main-menu_0.jpg" border="0" alt="Return to Main Menu" /></a>
+</div>
+
+<div id="Exit">
+	<a href="javascript:popConfirm();"  onMouseOver="MM_swapImage('btnexit','','images/exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img id="btnexit" name="btnexit" src="images/exit_0.jpg" border="0" alt="Exit the course" /></a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Popup Information</title>
+<link href="../cdcpopup.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+<script type="text/JavaScript">
+<!--
+
+var gDef = getQueryValue('popterm')
+var arrPopup = new Array();
+var numTern = 7;
+for (var i=0; i<numTern; i++) {
+	arrPopup[i] = "";
+}
+arrPopup[0]  = "<p class='popupH'>1940s</p><p>In the 1940s, the CDC was designated as a federal agency to work with state and local health departments. The public health advisor program was also created during this era.</p>"
+
+arrPopup[1]  = "<p class='popupH'>1950s</p><p>The Epidemic Intelligence Service was born in the 1950s. The Venereal Disease Control Grant-in-Aid Program was also created. Polio eradication, national disease surveillance, and international health were the focus of the CDC during this era.</p>"
+
+arrPopup[2]  = "<p class='popupH'>1960s</p><p>The MMWR was assumed by the CDC in the 1960s and several new programs were created including the Tuberculosis and Smallpox Eradication programs. The Immunization Practices Advisory Committee was also created at this time.</p>"
+
+arrPopup[3]  = "<p class='popupH'>1970s</p><p>The Childhood immunization program and NIOSH were created in the 1970s. NIOSH was made a part of the CDC in 1973. Several new programs were also introduced including the health education, environmental health, dental disease, and nutrition programs. Smallpox was eradicated during this era.</p>"
+
+arrPopup[4]  = "<p class='popupH'>1980s</p><p>Several new public health programs were established during the 1980s including violence epidemiology, smoking and health, the Center for Chronic Disease Prevention and Health Promotion, and Global EIS. The Viral and Rickettsial Disease Lab was also created during this time. Polio was eradicated. Folic acid was discovered to prevent neural tube defects. Computer-assisted health surveys were created and investigations into the Ebola and the hanta virus began.</p>"
+
+arrPopup[5]  = "<p class='popupH'>1990s</p><p>During the 1990s, Polio elimination was certified in the Americas. The CDC’s Laboratory Response Network was also established during this era.</p>"
+
+arrPopup[6]  = "<p class='popupH'>2000s</p><p>In the current decade, the CDC created the National Center for Birth Defects and Developmental Disabilities and established the Coordinating Centers and Coordinating Offices. Syphilis rates have reached an all-time low. Rubella has been eliminated in the US during this decade and SARS and the West Nile virus were also discovered.</p>"
+
+//alert(gDef)
+</script>
+</head>
+
+<body onload="MM_preloadImages('../sysimages/close_2.jpg');">
+<div id="noGraphicPopupText">
+  <p class="popupH">feedback</p>
+  <p>all</p>
+    <script language="javascript" type="text/javascript" >
+		document.getElementById('noGraphicPopupText').innerHTML="<br />"+arrPopup[gDef-1]+"<br />";
+    </script>
+  
+  <div class="CloseButton">
+    <div align="center"><a href="javascript:self.close();" onClick="javascript:self.close();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CButton','','../sysimages/close_2.jpg',1)"><img src="../sysimages/close_0.jpg" alt="Close Button" name="CButton" width="82" height="37" border="0" id="CButton" /></a></div>
+  </div>
+</div>
+</body>
+</html>

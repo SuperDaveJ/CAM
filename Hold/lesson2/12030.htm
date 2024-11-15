@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- InstanceBegin template="/Templates/lefttext_rightgraphic.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>CDC Culture</title>
+<!-- InstanceEndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../neo_m01.css" title = "neoCSS">
+
+<script language="JavaScript" type="text/JavaScript" src="../scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+
+<!-- InstanceBeginEditable name="EditTur" -->
+<style>
+p {
+	margin-top: 0px;
+	margin-left: 5px;
+}
+.distP {
+	line-height: 95%;
+	font-size:11px;
+}
+.columnP{
+	line-height: 90%;
+	text-align:center;
+	font-size:10px;
+	font-weight:bold;
+}
+#Content {
+	z-index:2;
+	width: 800;
+}
+</style>
+
+<!-- InstanceEndEditable -->
+<script language="javascript">
+if (typeof(blnTut) == "undefined")  {
+	initializePage();
+}
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+}
+
+</script>
+<!-- InstanceBeginEditable name="EditScript" -->
+<script language="JavaScript">
+<!--
+MM_reloadPage(true);
+function findNext() {
+	var NextPage = "12040.htm"
+	goNext (NextPage);
+}
+function findBack() {
+	var BackPage = "12020.htm"
+	goNext (BackPage);
+}
+
+// Set the message for the alert box for review the source
+am = "This function is disabled!";
+
+// do not edit below this line
+// ===========================
+bV  = parseInt(navigator.appVersion)
+bNS = navigator.appName=="Netscape"
+bIE = navigator.appName=="Microsoft Internet Explorer"
+
+function fs(e) {
+   if (bNS && e.which > 1){
+      alert(am)
+      return false
+   } else if (bIE && (event.button >1)) {
+     alert(am)
+     return false;
+   }
+}
+
+document.onmousedown = fs;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (bNS && bV<5) window.onmousedown = fs;
+
+// the following functions work for IE 4+ only
+var x1_pos = 695; //upright x position (absolute pix)
+var y1_pos = 220; //upright y position (absolute)
+var x_intV = 53; //the height of a grid (pix)
+var y_intV = 42 //the width of a grid (pix)
+// the following functions work for IE 4+ only
+var nItems = 3; //the row number of the grid interaction
+var userAns = new Array (nItems);
+for (var i=0; i<nItems; i++) {
+	userAns[i]=0} ;
+var triesUser = 0; // ini the try times
+var triesLimit = 2; 
+var qStatus = 0;	//question status. 1=correct, 0=incorrect
+var strCorrectAns = "2,1,2" // the correct location for each row: i.e., "2,3,1,4"--column 2 is correct for row 1, colunm 3 is correct for row 2....
+var correctAns = new Array(nItems);
+correctAns = strCorrectAns.split(",");
+//pass feedback
+var FbNoneCorrect = 1 //"Incorrect. 
+var FbSomeCorrect = 2
+var FbNoAnswer = 3 //not selected;
+var FbAllCorrect = 4 //"Correct! 
+var FbFinalIncorrect = 5 // 2nd Incorrect. 
+
+function showCheckBox (thisBox) {
+	var whichBox = thisBox;
+	var H_num = parseInt(whichBox.substring(0,1));
+	var V_num = parseInt(whichBox.substring(1,2));
+	var d = document;
+	var adj_Y = 0
+	//if (H_num == 5) adj_Y = 8;
+if (triesUser < triesLimit ) {	
+	userAns[H_num-1] = V_num; 
+	//MM_showHideLayers('feedback','','hide');
+
+	for (var i=0; i<nItems; i++) {
+		MM_swapImage(eval("'imaDrag"+(i+1)+"'"),'','../sysimages/click-grid-button-checked.jpg',1);
+	}
+	d.all[eval("'distr" + (H_num) + "'")].style.pixelLeft = x1_pos + (V_num-1)* x_intV;
+	d.all[eval("'distr" + (H_num) + "'")].style.pixelTop = y1_pos + (H_num-1) * y_intV + adj_Y;
+	MM_showHideLayers(eval("'distr" + (H_num) + "'"),'','show');
+}	
+}
+
+function judgeInteraction() {
+if (triesUser < triesLimit ) { 
+	var d = document;
+	var strTemp = "";
+	var nCorrect = 0; triesUser += 1;
+	var	qStatus = 0;
+	var nChecked = 0;
+	
+	for (var i=0; i<nItems; i++) {
+		if (userAns[i] == correctAns[i]) nCorrect += 1
+		if (userAns[i] > 0) nChecked += 1
+	}
+
+	if (nCorrect == nItems) qStatus = 2
+	else if (nChecked > 0) {
+		qStatus = 1
+		strTemp = FbSomeCorrect
+	} else {
+		qStatus = 0
+		triesUser -= 1;
+		strTemp = FbNoAnswer
+	}
+	
+	if (qStatus == 0) {
+		// do nothing
+	} else if (qStatus == 2) {
+		strTemp = FbAllCorrect;	
+		triesUser = triesLimit;		
+	} else {
+		if (triesUser == triesLimit | triesUser > triesLimit) {
+			strTemp = FbFinalIncorrect;
+			for (var i=0; i<nItems; i++) {
+				d.all[eval("'distr" + (i+1) + "'")].style.pixelLeft = x1_pos + (correctAns[i]-1)* x_intV;
+				d.all[eval("'distr" + (i+1) + "'")].style.pixelTop = y1_pos + (i) * y_intV;		
+				d.all[eval("'distr" + (i+1) + "'")].style.visibility = "visible";		
+			}
+		} else {
+			strTemp = FbSomeCorrect;
+			//for (var i=0; i<nItems; i++) {
+//				if (correctAns[i] != userAns[i]) {
+//				//var dragName = "imaDrag"+(i+1)
+//
+//				//alert(dragName)
+//				
+//				//alert(i+1 + ", corrct anwser: " + correctAns + "and userAns: "+ userAns)
+//				 //document.eval(dragName).src= "images/12040_x.jpg"
+//					MM_swapImage(eval("'imaDrag" + (i+1) + "'"),'','..sysimages/click-grid-button-checked.jpg',1);
+//					//alert(i+1 + ", corrct anwser: " + correctAns + "and userAns: "+ userAns)
+//				}
+//			}
+		}
+	}				
+
+		transTerm(strTemp);
+}
+}
+
+//-->
+</script>
+<!-- InstanceEndEditable -->
+
+</head>
+
+<body onLoad=" onpage();  MM_preloadImages('../sysimages/background.jpg','../sysimages/exit_2.jpg','../sysimages/glossary_2.jpg')" onUnload="if (closing) exitCourse(false)" >
+<div id="TopicH" ><!-- InstanceBeginEditable name="EditModuleT" --><b>CDC Culture:</b> CDC Mission and Values<!-- InstanceEndEditable --></div>
+<div id="pageN"><!-- InstanceBeginEditable name="EditPageN" -->Page 3 of 11<!-- InstanceEndEditable --></div>
+<div id="Content" ><!-- InstanceBeginEditable name="EditContents" --> 
+  <p class="topicH">Orientation Check Point</p>
+  <p>The descriptions below are excerpts from either the CDC's vision or mission.  Match the description with the appropriate category.</p>
+
+  <div id="dlink" style="position:absolute; top:430px; left:830px; width:15px; height:15px; z-index:10;"><a class="dlink" href="javascript:goNext('12030_508.htm')">D</a></div>
+<!-- InstanceEndEditable --></div>
+
+
+<!-- InstanceBeginEditable name="EditaddGraphic" --><div id="gridHolder" style="position:absolute; z-index:0; top:180px; left:238px; width:184px; height: 159px;"><img src="images/12030.jpg" alt="" name="GridBackground" width="543" height="167" border="0" usemap="#GridBackgroundMap"  />
+<map name="GridBackgroundMap">
+<area shape="rect" coords="445,33,487,66" href="javascript:showCheckBox('11')" id="distr11" />
+<area shape="rect" coords="494,33,538,66" href="javascript:showCheckBox('12')" id="distr12" />
+<area shape="rect" coords="445,74,487,108" href="javascript:showCheckBox('21')" id="distr21" />
+<area shape="rect" coords="494,74,539,109" href="javascript:showCheckBox('22')" id="distr22" />
+<area shape="rect" coords="445,115,487,151" href="javascript:showCheckBox('31')" id="distr31" />
+<area shape="rect" coords="494,115,540,153" href="javascript:showCheckBox('32')" id="distr32" />
+</map>
+
+</div>
+  
+<div id="distr1" style="position:absolute; z-index:10; visibility: hidden; left: 16px; top: 34px;" ><img src="../sysimages/click-grid-button-checked.jpg" alt="distractor 1" name="imaDrag1" width="19" height="19" id="imaDrag1" /></div>
+<div id="distr2" style="position:absolute; z-index:10; visibility: hidden;" ><img src="../sysimages/click-grid-button-checked.jpg" alt="distractor 2" width="19" height="19" name="imaDrag2" id="imaDrag2" /></div>
+<div id="distr3" style="position:absolute; z-index:10; visibility: hidden;" ><img src="../sysimages/click-grid-button-checked.jpg" alt="distractor 3" width="19" height="19" name="imaDrag3" id="imaDrag3" /></div>
+
+
+<div id="lyDone" style="position:absolute; top:390px; left:452px">
+  <a href="#" onClick="judgeInteraction()" onMouseOut="MM_swapImage('DoneButton','','../sysimages/done_0.jpg',1)" onMouseOver="MM_swapImage('DoneButton','','../sysimages/done_2.jpg',1)"><img src="../sysimages/done_0.jpg" alt="Done button" id="DoneButton" name="DoneButton" width="82" height="37" border="0"></a>  </div>
+<!-- InstanceEndEditable -->
+
+
+<div id="Prompt"><!-- InstanceBeginEditable name="EditPrompt" -->Correctly match the items, then click Done.
+<!-- InstanceEndEditable --></div>
+
+<div id="Next"><a href="javascript:findNext();" onMouseOver="MM_swapImage('btnNext','','../sysimages/next_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/next_0.jpg" alt="Goes to next page" name="btnNext" width="36" height="71" border="0" id="btnNext"></a></div> 
+
+<div id="Repeat" ><a href="javascript:refresh()"  onMouseOver="MM_swapImage('btnRepeat','','../sysimages/refresh_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/refresh_0.jpg" alt="Replays the current page" name="btnRepeat" width="47" height="60" border="0" id="btnRepeat"></a></div>
+
+<div id="Back"><a href="javascript:findBack();" onMouseOver="MM_swapImage('btnBack','','../sysimages/back_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/back_0.jpg" alt="Goes to previous page" name="btnBack" width="32" height="55" border="0" id="btnBack"></a></div>
+
+<div id="MainMenu" ><a href="javascript:toMenu(false)"  onMouseOver="MM_swapImage('btnmain','','../sysimages/mainmenu_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/mainmenu_0.jpg" alt="Main Menu" name="btnmain" width="103" height="41" border="0" id="btnmain"></a></div>
+
+<div id="Glossary"><a href="javascript:openGlossary()"  onMouseOver="MM_swapImage('btnglossary','','../sysimages/glossary_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/glossary_0.jpg" alt="Opens a glossary screen" name="btnglossary" width="103" height="41" border="0" id="btnglossary"></a></div>
+
+<div id="Help"><a href="javascript:openHelp();"  onMouseOver="MM_swapImage('btnHelp','','../sysimages/help_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/help_0.jpg" alt="Help" name="btnHelp" width="103" height="41" border="0" id="btnHelp"></a></div>
+
+<div id="Exit"><a href="javascript:popConfirm();"  onMouseOver="MM_swapImage('btnexit','','../sysimages/exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/exit_0.jpg" alt="Exit" name="btnexit" width="103" height="41" border="0" id="btnexit"></a></div>
+
+
+<!-- InstanceBeginEditable name="JSControl" -->
+
+<!-- InstanceEndEditable -->
+
+</body>
+<!-- InstanceEnd --></html>

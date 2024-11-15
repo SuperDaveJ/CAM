@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Popup Information</title>
+<link href="../cdcpopup.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+<script type="text/JavaScript">
+
+var gDef = getQueryValue('popterm')
+var arrPopup = new Array();
+var numTern = 1;
+for (var i=0; i<numTern; i++) {
+	arrPopup[i] = "";
+}
+
+arrPopup[0]  = "<p class='popupH'>Healthcare Sector Partners</p><p>Healthcare sector partners include:</p><p><ul> <li>American Academy of Family Physicians.</li><li>Cincinnati Children’s Hospital and Medical Association.</li><li>Denver Health Medical Center, National Association for Community Health Centers.</li><li>Visiting Nurse Associations of America.</li></ul></p>";
+
+</script>
+</head>
+
+<body onload="MM_preloadImages('../sysimages/close_2.jpg');">
+<div id="noGraphicPopupText">
+  <p class="popupH"></p>
+  <script language="javascript" type="text/javascript" >
+	document.getElementById('noGraphicPopupText').innerHTML=arrPopup[gDef-1];
+</script>
+  <div class="CloseButton">
+    <div align="center"><a href="javascript:self.close();" onClick="javascript:self.close();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CButton','','../sysimages/close_2.jpg',1)"><img src="../sysimages/close_0.jpg" alt="Close Button" name="CButton" width="82" height="37" border="0" id="CButton" /></a></div>
+  </div>
+</div>
+</body>
+</html>

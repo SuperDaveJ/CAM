@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- InstanceBegin template="/Templates/selfcheckq.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>CDC Culture</title>
+<!-- InstanceEndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../neo_m01.css" title = "neoCSS">
+
+<script language="JavaScript" type="text/JavaScript" src="../scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+
+<!-- InstanceBeginEditable name="EditTur" -->
+<style>
+.gridStyle {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:0 1px 1px 0; 
+}
+.gridTop {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:1px 1px 1px 0; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	text-align:center;
+}
+.gridLeft {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:0 1px 1px 1px; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+.gridFirstSell {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:1px 1px 1px 1px; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight:bold;
+}
+#Content {
+	position:absolute; 
+	width:820px; 
+	height:40px;
+}
+</style>
+
+<script language="JavaScript">
+
+</script>
+<!-- InstanceEndEditable -->
+<script language="javascript">
+if (typeof(blnTut) == "undefined")  {
+	initializePage();
+}
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+}
+
+</script>
+<!-- InstanceBeginEditable name="EditScript" -->
+<script language="JavaScript">
+<!--
+function onpage() {
+}
+
+MM_reloadPage(true);
+function findNext() {
+	var NextPage = "12110.htm"
+	goNext (NextPage);
+}
+function findBack() {
+	var BackPage = "12090.htm"
+	goNext (BackPage);
+}
+
+function onpage() {
+	//document.getElementById("Prompt").style.top = "539px";
+}
+
+// Set the message for the alert box for review the source
+am = "This function is disabled!";
+
+// do not edit below this line
+// ===========================
+bV  = parseInt(navigator.appVersion)
+bNS = navigator.appName=="Netscape"
+bIE = navigator.appName=="Microsoft Internet Explorer"
+
+function fs(e) {
+   if (bNS && e.which > 1){
+      alert(am)
+      return false
+   } else if (bIE && (event.button >1)) {
+     alert(am)
+     return false;
+   }
+}
+
+document.onmousedown = fs;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (bNS && bV<5) window.onmousedown = fs;
+
+// the following functions work for IE 4+ only
+//Initialize variables
+var triesUser = 0;
+var triesLimit = 2;
+var nRows, nCols
+nRows = 5;	//does not include the first row which is for column title
+nCols = 5;	//does not include the first column which is for text
+widthTable = 800;	//table width
+widthCol0 = 200;	//first column (text) width. All other columns will be evenly divided.
+strCorrectRow1 = "0,0,0,1,0";		//correct answer for row 1.
+strCorrectRow2 = "0,0,0,0,1";		//correct answer for row 2.
+strCorrectRow3 = "1,0,0,0,0";		//correct answer for row 3.
+strCorrectRow4 = "0,0,1,0,0";		//correct answer for row 4.
+strCorrectRow5 = "0,1,0,0,0";		//correct answer for row 5.
+
+//pass feedback
+var FbNoneCorrect = 1 //"Incorrect. 
+var FbSomeCorrect = 2
+var FbNoAnswer = 3 //not selected;
+var FbAllCorrect = 4 //"Correct! 
+var FbFinalIncorrect = 5 // 2nd Incorrect. 
+
+arrCorrectAns = new Array(nRows);
+arrUserAns = new Array(nRows);
+for (var i=0; i<nRows; i++) {
+	arrCorrectAns[i] = new Array(nCols);
+	arrUserAns[i] = new Array(nCols);
+	for (var j=0; j<nCols; j++) arrUserAns[i][j] = 0
+	arrCorrectAns[i] = eval('strCorrectRow'+ (i+1) +'.split(",")')
+}
+//arrColWidth = new Array(nCols);
+//for (var j=0; j<nCols; j++) {
+//	arrColWidth[j] = Math.round((widthTable - widthCol0)/nCols) + "px";
+//}
+//Specify row and column titles here.  You need to add or remove titles accordingly.
+
+
+//for (i=0; i<nRows; i++) {
+//	for (j=0; j<nCols; j++) {
+//		if ( parseInt(arrCorrectAns[i][j]) == 1 )
+//			FbFinalIncorrect += arrRowTitle[i+1] + " matches " + arrColTitle[j+1] + ". "
+//	}
+//}
+//FbFinalIncorrect += " Select Next to continue."
+//********************* NO change is needed below this line. *************************
+
+function judgeInteraction() {
+	if (triesUser < triesLimit ) { 
+		var strTemp, thisRow;
+		for (var i=0; i<nRows; i++) {
+			strTemp = ""
+			thisRow = eval('document.forms[0].fmDist' + (i+1))
+			for (var j=0; j<nCols; j++) {
+				if(thisRow[j].checked) {
+					strTemp = strTemp + "1,";
+				} else {
+					strTemp = strTemp + "0,";
+				}
+			}
+			arrUserAns[i] = strTemp.split(",")
+		}
+		
+		var unChecked = 0;
+		var nCorrect = 0;
+		var nIncorrect = 0;
+		var nChecksMatched = 0;
+		for (i=0; i<nRows; i++) {
+			for (j=0; j<nCols; j++) {
+				if (arrUserAns[i][j] == 0) unChecked += 1;
+				if (arrUserAns[i][j] == arrCorrectAns[i][j]) nCorrect += 1
+			}
+		}
+		if (unChecked == nRows*nCols) {
+			//No answer selected
+			strFeedback = FbNoAnswer;
+		} else {
+			triesUser += 1;
+			if (nCorrect == nRows*nCols) {
+				for (i=0; i<nRows; i++) {
+					for (j=0; j<nCols; j++) {
+						if (arrCorrectAns[i][j] == 1) {
+							eval('document.forms[0].fmDist' + (i+1) + '[' + j + '].checked = true')
+						} else {
+							eval('document.forms[0].fmDist' + (i+1) + '[' + j + '].checked = false')
+						}
+						eval('document.forms[0].fmDist' + (i+1) + '[' + j + '].disabled = "disabled"')
+					}
+				}		
+				//Correct answers
+				strFeedback = FbAllCorrect;
+				triesUser = triesLimit;
+				//eval("document.getElementById('qTable').style.cursor = 'text'");
+				//Enable Next button and lock Done button
+				//MM_showHideLayers('lyDone','','hide')
+				//document.Done.disabled = "disabled"
+			} else {
+				//second try
+
+				if (triesUser == triesLimit) {
+					for (i=0; i<nRows; i++) {
+						for (j=0; j<nCols; j++) {
+							if (arrCorrectAns[i][j] == 1) {
+								eval('document.forms[0].fmDist' + (i+1) + '[' + j + '].checked = true')
+							} else {
+								eval('document.forms[0].fmDist' + (i+1) + '[' + j + '].checked = false')
+							}
+							eval('document.forms[0].fmDist' + (i+1) + '[' + j + '].disabled = "disabled"')
+						}
+					}
+					strFeedback = FbFinalIncorrect;
+					//MM_showHideLayers('lyDone','','hide')
+					//eval("document.getElementById('qTable').style.cursor = 'text'");
+					//document.Done.disabled = "disabled"
+				} else  { //1st Incorrect
+					strFeedback = FbSomeCorrect;
+				}
+			}
+		}
+		transTerm(strFeedback)
+	}
+}
+
+//-->
+</script>
+<!-- InstanceEndEditable -->
+
+</head>
+
+<body onLoad=" onpage();  MM_preloadImages('../sysimages/background.jpg','../sysimages/exit_2.jpg','../sysimages/glossary_2.jpg')" onUnload="if (closing) exitCourse(false)" >
+<div id="TopicH" ><!-- InstanceBeginEditable name="EditModuleT" --><b>CDC Culture:</b> CDC Mission and Values<!-- InstanceEndEditable --></div>
+<div id="pageN"><!-- InstanceBeginEditable name="EditPageN" -->Page 10 of 11<!-- InstanceEndEditable --></div>
+<div id="Content" ><!-- InstanceBeginEditable name="EditContents" --> <p class="topicH">Orientation  Check Point</p>
+  <p>The CDC has met many milestones since its creation more than 60 years ago. Match the event with the decade in which it occurred.</p>
+  <form name="form1" method="post" action="">
+  <table width="750" border="0" cellpadding="1" cellspacing="0">
+    <tr >
+      <th scope="col" width="350" align='center' class='gridFirstSell'>Description</th>
+      <th scope="col" width="80" class='gridTop'><strong>1940s</strong></th>
+      <th scope="col" width="80" class='gridTop'><strong>1950s</strong></th>
+      <th scope="col" width="80" class='gridTop'><strong>1960s</strong></th>
+      <th scope="col" width="80" class='gridTop'><strong>1970s</strong></th>
+      <th scope="col" width="80" class='gridTop'><strong>1980s</strong></th>
+    </tr>
+    <tr>
+      <td class='gridLeft'>Smallpox was eradicated</td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist1" tabindex="1" alt=" matches, 1940s">      </td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist1" tabindex="2" alt=" matches, 1950s">  </td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist1" tabindex="3" alt=" matches, 1960s"></td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist1" tabindex="4" alt=" matches, 1970s"></td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist1" tabindex="5" alt=" matches, 1980s"></td>
+    </tr>
+    <tr>
+      <td class='gridLeft'>Polio was eradicated</td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist2" tabindex="6" alt=" matches, 1940s">  </td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist2" tabindex="7" alt=" matches, 1950s">  </td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist2" tabindex="8" alt=" matches, 1960s"></td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist2" tabindex="9" alt=" matches, 1970s"></td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist2" tabindex="10" alt=" matches, 1980s"></td>
+    </tr>
+    <tr>
+      <td class='gridLeft'>The public health advisor program was created</td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist3" tabindex="11" alt=" matches,1940s">  </td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist3" tabindex="12" alt=" matches, 1950s">  </td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist3" tabindex="13" alt=" matches, 1960s"></td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist3" tabindex="14" alt=" matches, 1970s"></td>
+      <td align="center" class='gridStyle'><input type="radio" name="fmDist3" tabindex="15" alt=" matches, 1980s"></td>
+    </tr>
+    <tr>
+      <td class='gridLeft'>MMWR was assumed by the CDC</td>
+      <td align="center" class='gridStyle'><input name="fmDist4" type="radio" tabindex="16" alt=" matches, 1940s">      </td>
+      <td align="center" class='gridStyle'><input name="fmDist4" type="radio" tabindex="17" alt=" matches, 1950s"></td>
+      <td align="center" class='gridStyle'><input name="fmDist4" type="radio" tabindex="18" alt=" matches, 1960s"></td>
+      <td align="center" class='gridStyle'><input name="fmDist4" type="radio" tabindex="19" alt=" matches, 1970s"></td>
+      <td align="center" class='gridStyle'><input name="fmDist4" type="radio" tabindex="20" alt=" matches, 1980s"></td>
+    </tr>
+
+    <tr>
+      <td class='gridLeft'>Epidemic Intelligence Service was born</td>
+      <td align="center" class='gridStyle'><input name="fmDist5" type="radio" tabindex="21" alt=" matches, 1940s">      </td>
+      <td align="center" class='gridStyle'><input name="fmDist5" type="radio" tabindex="22" alt=" matches, 1950s"></td>
+      <td align="center" class='gridStyle'><input name="fmDist5" type="radio" tabindex="23" alt=" matches, 1960s"></td>
+      <td align="center" class='gridStyle'><input name="fmDist5" type="radio" tabindex="24" alt=" matches, 1970s"></td>
+      <td align="center" class='gridStyle'><input name="fmDist5" type="radio" tabindex="25" alt=" matches, 1980s"></td>
+    </tr>
+  </table>  
+  </form>
+<div id="lyDone" style="position:absolute; top:265px; left:349px">
+  <a href="#" onClick="judgeInteraction()" onMouseOut="MM_swapImage('DoneButton','','../sysimages/done_0.jpg',1)" onMouseOver="MM_swapImage('DoneButton','','../sysimages/done_2.jpg',1)"><img src="../sysimages/done_0.jpg" alt="Done button" id="DoneButton" name="DoneButton" width="82" height="37" border="0"></a>  </div>
+<!-- InstanceEndEditable --></div>
+
+
+<!-- InstanceBeginEditable name="EditaddGraphic" -->
+<!-- InstanceEndEditable -->
+
+
+<div id="Prompt"><!-- InstanceBeginEditable name="EditPrompt" -->Select Next to continue.<!-- InstanceEndEditable --></div>
+
+<div id="Next"><a href="javascript:findNext();" onMouseOver="MM_swapImage('btnNext','','../sysimages/next_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/next_0.jpg" alt="Goes to next page" name="btnNext" width="36" height="71" border="0" id="btnNext"></a></div> 
+
+<div id="Repeat" ><a href="javascript:refresh()"  onMouseOver="MM_swapImage('btnRepeat','','../sysimages/refresh_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/refresh_0.jpg" alt="Replays the current page" name="btnRepeat" width="47" height="60" border="0" id="btnRepeat"></a></div>
+
+<div id="Back"><a href="javascript:findBack();" onMouseOver="MM_swapImage('btnBack','','../sysimages/back_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/back_0.jpg" alt="Goes to previous page" name="btnBack" width="32" height="55" border="0" id="btnBack"></a></div>
+
+<div id="MainMenu" ><a href="javascript:toMenu(false)"  onMouseOver="MM_swapImage('btnmain','','../sysimages/mainmenu_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/mainmenu_0.jpg" alt="Main Menu" name="btnmain" width="103" height="41" border="0" id="btnmain"></a></div>
+
+<div id="Glossary"><a href="javascript:openGlossary()"  onMouseOver="MM_swapImage('btnglossary','','../sysimages/glossary_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/glossary_0.jpg" alt="Opens a glossary screen" name="btnglossary" width="103" height="41" border="0" id="btnglossary"></a></div>
+
+<div id="Help"><a href="javascript:openHelp();"  onMouseOver="MM_swapImage('btnHelp','','../sysimages/help_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/help_0.jpg" alt="Help" name="btnHelp" width="103" height="41" border="0" id="btnHelp"></a></div>
+
+<div id="Exit"><a href="javascript:popConfirm();"  onMouseOver="MM_swapImage('btnexit','','../sysimages/exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/exit_0.jpg" alt="Exit" name="btnexit" width="103" height="41" border="0" id="btnexit"></a></div>
+
+
+<!-- InstanceBeginEditable name="JSControl" -->
+
+<!-- InstanceEndEditable -->
+
+</body>
+<!-- InstanceEnd --></html>

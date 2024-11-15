@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Centralized Asset Management</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<style type="text/css">
+<!--
+
+body {
+	background-image: url(sysimages/background_mainmenu.jpg);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-repeat: no-repeat;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight:bold;
+	color:#000000;
+}
+
+#header {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:4;
+	left: 50px;
+	top: 30px;
+}
+
+#buttons_bkgrnd {
+	position:absolute;
+	width:200px;
+	height:115px;
+	z-index:0;
+	left: 523px;
+	top: 55px;
+}
+
+.sum_title {
+	text-align: right;
+	font-size: 11px;
+	font-weight: bold;
+	color:#ffffff;
+	line-height: 1.1;
+}
+.sum_text {
+	text-align: left;
+	font-size: 11px;
+	font-weight: normal;
+	color:#ffffff;
+}
+
+.small_text {
+	text-align: left;
+	font-size: 9px;
+	font-weight: normal;
+	color:#ffffff;
+}
+
+-->
+</style>
+
+<script language="JavaScript" type="text/JavaScript" src="scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="scripts/afit_module01.js"></script>
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+
+initializePage();
+
+MM_preloadImages('sysimages/background_mainmenu.jpg')
+MM_reloadPage(true);
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+}
+
+//This funciton should be placed in the page onload event.  It's not used now.
+function updateMenu() {
+	closing = false;
+	if (verNumber != 2) { // LMS version
+		//display completion status
+		for (i=0; i<nLesson; i++) {
+			if (arrLessonStatus[i] >= 2) {
+				eval("document.getElementById('completed" + (i+1) + "').style.visibility = 'visible'");
+			} else {
+				eval("document.getElementById('completed" + (i+1) + "').style.visibility = 'hidden'");
+			}
+		}
+	}
+
+}
+
+//Show summary info
+arrSummary = new Array(nLesson+1)
+for (var i=0; i<=nLesson; i++) {
+	arrSummary[i] = new Array(4)
+}
+arrSummary[0][0] = "Course:"
+arrSummary[0][1] = "Centralized Asset Management"
+arrSummary[0][2] = "Overview:"
+arrSummary[0][3] = "Discover the processes used to centralize and integrate management of Air Force sustainment resources to optimize warfighting capability through effective and efficient allocation of resources across the enterprise that both enables logistics business processes and operates within statutory regulatory guidelines."
+
+arrSummary[1][0] = "Lesson 1:"
+arrSummary[1][1] = "Importance of CAM"
+arrSummary[1][2] = "Overview:"
+arrSummary[1][3] = "<p>Explore the importance of the CAM process for weapon system sustainment and accomplish the following objectives:</p>"
+
+arrSummary[2][0] = "Lesson 2:"
+arrSummary[2][1] = "About PBOs"
+arrSummary[2][2] = "Overview:"
+arrSummary[2][3] = "<p>Explore  the requirement to identify desired PBOs and accomplish the following objectives:</p>"
+
+arrSummary[3][0] = "Lesson 3:"
+arrSummary[3][1] = "About Performance Based Requirements"
+arrSummary[3][2] = "Overview:"
+arrSummary[3][3] = "<p>Explore the performance based requirements and accomplish the following objectives:</p>"
+
+arrSummary[4][0] = "Lesson 4:"
+arrSummary[4][1] = "About Optimization Performance within Constraints"
+arrSummary[4][2] = "Overview:"
+arrSummary[4][3] = "<p>Explore the importance of optimization performance within constraints and accomplish  the following objectives:</p>"
+
+arrSummary[5][0] = "Lesson 5:"
+arrSummary[5][1] = "About Monitoring Performance"
+arrSummary[5][2] = "Overview:"
+arrSummary[5][3] = "<p>Explore the importance of monitoring performance and accomplish the following objectives:</p>"
+
+function showSummary(iWhich) {
+	document.getElementById("les_id").innerHTML = arrSummary[iWhich][0];
+	document.getElementById("les_title").innerHTML = arrSummary[iWhich][1];
+	document.getElementById("sum_title").innerHTML = arrSummary[iWhich][2];
+	document.getElementById("sum_text").innerHTML = arrSummary[iWhich][3];
+	document.getElementById("les_sum").style.visibility = "visible";
+}
+
+function hideSummary() {
+	document.getElementById("les_id").innerHTML = arrSummary[0][0];
+	document.getElementById("les_title").innerHTML = arrSummary[0][1];
+	document.getElementById("sum_title").innerHTML = arrSummary[0][2];
+	document.getElementById("sum_text").innerHTML = arrSummary[0][3];
+	//document.getElementById("les_sum").style.visibility = "hidden";
+}
+//-->
+</script>
+
+</head>
+
+<body onLoad="updateMenu(); MM_preloadImages('sysimages/mod1_less1_0.jpg','sysimages/mod1_less1_2.jpg','sysimages/mod1_less2_0.jpg','sysimages/mod1_less2_2.jpg','sysimages/mod1_less3_0.jpg','sysimages/mod1_less3_2.jpg','sysimages/mod1_less4_0.jpg','sysimages/mod1_less4_2.jpg','sysimages/mod1_less5_0.jpg','sysimages/mod1_less5_2.jpg'); showSummary(0)" onUnload="if (closing) exitCourse(false)">
+
+<div id="nav" style="position:absolute; left:797px; top:11px; width: 108px; height:38px; z-index: 3;">
+<a href="#" onMouseOver="MM_swapImage('btnNav','','sysimages/nav_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="sysimages/nav_0.jpg" alt="Navigation Tutorial button" name="btnNav" width="108" height="38" border="0" id="btnNav"></a>
+</div>
+
+<div id="Exit" style="position:absolute; width:78px; height:30px; z-index:3; top: 11px; left: 907px;">
+<a href="javascript:popConfirm()" onMouseOver="MM_swapImage('btnExit','','sysimages/mm_exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="sysimages/mm_exit_0.jpg" alt="Exit button" name="btnExit" width="78" height="30" border="0" id="btnExit"></a>
+</div>
+
+<div id="header" style="position:absolute; left:67px; top:46px; width:361px; height:48px; z-index:0; visibility:visible;">
+<img src="sysimages/header_mod1.jpg" width="361" height="48" border="0" alt="Header - CDC Culture"></div>
+
+<div id="les_sum" style="position:absolute; left:70px; top:110px; width:337px; height:182px; z-index:5; visibility:visible;">
+
+	<div id="les_id" style="position:absolute; left:0px; top:0px; width:80px; height:20px; z-index:5; visibility:inherit;" class="sum_title">Lesson 1</div>
+	<div id="les_title" style="position:absolute; left:91px; top:0px; width:250px; height:20px; z-index:5; visibility:inherit;" class="sum_text">Lesson title</div>
+	<div id="sum_title" style="position:absolute; left:0px; top:25px; width:80px; height:35px; z-index:5; visibility:inherit;" class="sum_title">Summary</div>
+	<div id="sum_text" style="position:absolute; left:91px; top:25px; width:250px; height:142px; z-index:5; visibility:inherit;" class="sum_text">Summary Text here.</div>
+
+</div>
+
+<div id="buttons_bkgrnd" style="position:absolute; left:526px; top:55px; width:478px; height:446px; z-index:0; visibility:visible;"><img src="sysimages/group_mod1_buttons.jpg" width="478" height="446"></div>
+
+<!--************* Regular Layers ********************-->
+<!-- Lesson 1 -->
+<div id="les1"  style=" position:absolute; width:91px; height:26px; top: 97px; left: 537px; z-index:2; visibility:visible;"><a href="javascript:goNext('lesson1/11010.htm')" onMouseOut="MM_swapImgRestore(); hideSummary()" onMouseOver="MM_swapImage('L1','','sysimages/mod1_less1_2.jpg',1); showSummary(1)"><img src="sysimages/mod1_less1_0.jpg" alt="Lesson 1: Explore different avenues that Federal agencies are using for successful recruiting.  Discover how to effectively market NRCS during your recruitment efforts." name="L1" width="93" height="99" border="0" ></a></div>
+
+<!-- Lesson 2 -->
+<div id="les2" style="position:absolute; width:116px; height:22px; top: 84px; left: 646px; z-index:2; visibility:visible;"><a href="#" onMouseOut="MM_swapImgRestore(); hideSummary()" onMouseOver="MM_swapImage('L2','','sysimages/mod1_less2_2.jpg',1); showSummary(2)"><img src="sysimages/mod1_less2_0.jpg" alt="Lesson 2: Learn about best practices used to recruit for diversity.  In the course on recruitment of minority candidates you’ll learn more specifically about processes and procedures used at NRCS for this type of recruiting." name="L2" width="120" height="113" border="0"></a></div>
+
+<!-- Lesson 3 -->
+<div id="les3" style="position:absolute; width:155px; height:20px; left:788px; top:65px; z-index:2; visibility:visible;"><a href="#" onMouseOut="MM_swapImgRestore(); hideSummary()" onMouseOver="MM_swapImage('L3','','sysimages/mod1_less3_2.jpg',1); showSummary(3)"><img src="sysimages/mod1_less3_0.jpg" alt="Lesson 3: Discover techniques for partnering with schools and organizations for both immediate recruitment efforts and for building a pool of future candidates." name="L3" width="159" height="131" border="0"></a></div>
+
+<!-- Lesson 4 -->
+<div id="les4" style="position:absolute; width:86px;height:27px;left:536px;top:219px; z-index:2; visibility:visible"><a href="#" onMouseOut="MM_swapImgRestore(); hideSummary()" onMouseOver="MM_swapImage('L4','','sysimages/mod1_less4_2.jpg',1); showSummary(4)"><img src="sysimages/mod1_less4_0.jpg" alt="Lesson 4: Identify avenues available to you for online recruitment, including USAJobs and Virtual Job Fairs.  Understand how to make your online recruitment efforts effective and tailor them to reach key target audiences." name="L4" width="92" height="97" border="0"></a></div>
+
+<!-- Lesson 5 -->
+<div id="les5" style="position:absolute; width:110px;height:27px;left:648px;top:222px; z-index:2; visibility:visible"><a href="#" onMouseOut="MM_swapImgRestore(); hideSummary()" onMouseOver="MM_swapImage('L5','','sysimages/mod1_less5_2.jpg',1); showSummary(5)"><img src="sysimages/mod1_less5_0.jpg" alt="Lesson 5: Learn about best practices for recruiting using available hiring flexibilities.  In the course on use of hiring authorities and incentives you’ll learn more specifically about processes and procedures used at NRCS." name="L5" width="116" height="111" border="0"></a></div>
+<!--****************** End of Regular Layers ****************************-->
+
+<!--************* Completed Layers ********************-->
+<!-- Lesson 1 -->
+<div id="completed1"  style=" position:absolute; width:91px; height:26px; top: 97px; left: 537px; z-index:3; visibility:hidden;"><a href="javascript:goNext('lesson1/11010.htm')" onMouseOut="hideSummary()" onMouseOver="showSummary(1)"><img src="sysimages/mod1_less1_2.jpg" alt="Lesson 1: Overview of Health and Human Services. Completed." name="L1c" width="93" height="99" border="0"></a></div>
+
+<!-- Lesson 2 -->
+<div id="completed2" style="position:absolute; width:116px; height:22px; top: 84px; left: 646px; z-index:3; visibility:hidden;"><a href="javascript:goNext('lesson2/12010.htm')" onMouseOut="hideSummary()" onMouseOver="showSummary(2)"><img src="sysimages/mod1_less2_2.jpg" alt="Lesson 2: CDC Mission and Values. Completed." name="L2c" width="120" height="113" border="0"></a></div>
+
+<!-- Lesson 3 -->
+<div id="completed3" style="position:absolute; width:155px; height:20px; left:788px; top:65px; z-index:3; visibility:hidden;"><a href="javascript:goNext('lesson3/13010.htm')" onMouseOut="hideSummary()" onMouseOver="showSummary(3)"><img src="sysimages/mod1_less3_2.jpg" alt="Lesson 3: Health Protection Goals. Completed." name="L3c" width="159" height="131" border="0"></a></div>
+
+<!-- Lesson 4 -->
+<div id="completed4" style="position:absolute; width:86px;height:27px;left:536px;top:219px; z-index:3; visibility:hidden"><a href="javascript:goNext('lesson4/14010.htm')" onMouseOut="hideSummary()" onMouseOver="showSummary(4)"><img src="sysimages/mod1_less4_2.jpg" alt="Lesson 4: CDC Partnerships. Completed." name="L4c" width="92" height="97" border="0"></a></div>
+
+<!-- Lesson 5 -->
+<div id="completed5" style="position:absolute; width:110px;height:27px;left:648px;top:222px; z-index:3; visibility:hidden"><a href="javascript:goNext('lesson5/15010.htm')" onMouseOut="hideSummary()" onMouseOver="showSummary(5)"><img src="sysimages/mod1_less5_2.jpg" alt="Lesson 5: Global Health Partnerships. Completed." name="L5c" width="116" height="111" border="0"></a></div>
+<!--****************** End of Completed Layers ****************************-->
+</body>
+</html>

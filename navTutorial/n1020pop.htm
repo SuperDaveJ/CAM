@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Popup Information</title>
+<link href="../afitpopup.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/navTutorial.js"></script>
+<script type="text/JavaScript">
+
+var gDef = getQueryValue('popterm')
+var arrPopup = new Array();
+var numTern = 7;
+for (var i=0; i<numTern; i++) {
+	arrPopup[i] = "";
+}
+
+arrPopup[0]  = "<p class='popupH'>Main Menu</p> <p>The Main Menu button returns you to the Main Menu from anywhere in the course.</p>"
+
+arrPopup[1]  = "<p class='popupH'>Glossary</p> <p>The glossary can be selected from any page. It provides a listing of key terms that are used throughout the course with their definition.</p>"
+
+arrPopup[2]  = "<p class='popupH'>Help</p> <p>Selecting the Help button launches a popup box with information from this navigation lesson.</p>"
+
+arrPopup[3]  = "<p class='popupH'>Exit</p> <p>Selecting the Exit button allows you to exit the course from any page. You will be asked to confirm that you want to exit.</p>"
+
+arrPopup[4]  = "<p class='popupH'>Back</p> <p>The Back button returns you to the previous screen.</p>"
+
+arrPopup[5]  = "<p class='popupH'>Refresh</p> <p>Refresh can be used to reset the functionality on any page. For example, you can select Refresh to replay audio features and animations.</p>"
+
+arrPopup[6]  = "<p class='popupH'>Next</p> <p>The Next button advances you to the next screen in the lesson.</p>"
+
+</script>
+</head>
+
+<body onload="MM_preloadImages('../sysimages/close_2.jpg');">
+<div id="noGraphicPopupText">
+  <p class="popupH">feedback</p>
+  <p>all</p>
+    <script language="javascript" type="text/javascript" >
+		document.getElementById('noGraphicPopupText').innerHTML="<br />"+arrPopup[gDef-1]+"<br />";
+    </script>
+  
+  <div class="CloseButton">
+    <div align="center"><a href="javascript:self.close();" onClick="javascript:self.close();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CButton','','../sysimages/close_2.jpg',1)"><img src="../sysimages/close_0.jpg" alt="Close Button" name="CButton" width="82" height="37" border="0" id="CButton" /></a></div>
+  </div>
+</div>
+</body>
+</html>

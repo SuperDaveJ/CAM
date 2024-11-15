@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>CDC NEO WBT</title>
+<!-- TemplateEndEditable -->
+<link rel="stylesheet" type="text/css" href="../cdc_neo.css" title = "cdcCSS">
+<!-- TemplateInfo codeOutsideHTMLIsLocked="true" -->
+<script language="JavaScript" type="text/JavaScript" src="../scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/afit_module01.js"></script>
+
+<script language="javascript">
+<!--
+initializePage();
+
+MM_reloadPage(true);
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+}
+
+//================== disable right-click ====================
+am = "This function is disabled!";
+bV  = parseInt(navigator.appVersion)
+bNS = navigator.appName=="Netscape"
+bIE = navigator.appName=="Microsoft Internet Explorer"
+
+function fs(e) {
+   if (bNS && e.which > 1){
+      alert(am)
+      return false
+   } else if (bIE && (event.button >1)) {
+     alert(am)
+     return false;
+   }
+}
+
+document.onmousedown = fs;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (bNS && bV<5) window.onmousedown = fs;
+//================ End of disable right-click ==================
+
+//===================== Dispatch query string ========================
+iq = parseInt(getQueryValue("iq"));
+nQs = parseInt(getQueryValue("nQs"));
+arr_qOrder = new Array(nQs);
+arr_qStatus = new Array(nQs);
+userAttempt = parseInt(getQueryValue("ua"));
+arr_qOrder = getQueryValue("qO").split(';')
+arr_qStatus = getQueryValue("qS").split(';');
+
+nCorrect = 0;
+nqLeft = 0;
+for (i=0; i<nQs; i++) {
+	if (arr_qStatus[i] == "^") nCorrect += 1
+	if (arr_qStatus[i] == "~") nqLeft += 1
+}
+//==================== End of Dispatch query string ===================
+
+//============== Navigation Functions ========================
+var NextPage;
+var nItems = 4;
+
+function onpage() {
+	//MM_showHideLayers('Back','','hide')
+	MM_showHideLayers('Next','','hide')
+	MM_showHideLayers('Back','','hide')
+	if (nqLeft > 1)
+		document.getElementById("qLeft").innerHTML = "<strong>You have " + nqLeft + " questions left.</strong>"
+	else
+		document.getElementById("qLeft").innerHTML = "<strong>You have " + nqLeft + " question left.</strong>"
+}
+
+//============ End of Navigation Functions ================
+
+//======================== Question Start Here =======================
+
+function judgeInteraction() {
+	var strUserAns = "";
+	var feedbackItem = 0;
+	arrUserAns = new Array(nItems);
+	arrCorrectAns = new Array(nItems);
+	arrCorrectAns = strCorrectAns.split(",")
+	
+	fmDistracter=document.forms[0].fmDistracter
+	for (var i=0; i<nItems; i++) {
+		if(fmDistracter[i].checked) {
+			strUserAns = strUserAns + "1,";
+		} else {
+			strUserAns = strUserAns + "0,";
+		}
+	}
+	arrUserAns = strUserAns.split(",")
+
+	var unChecked = 0;
+	for (i=0; i<nItems; i++) {
+		if (arrUserAns[i] == '0') unChecked += 1;
+	}
+
+	if (unChecked == nItems) {
+		//No answer selected
+		feedbackItem = 0;
+	} else {
+		if (strUserAns == strCorrectAns) {
+			//Correct
+			arr_qStatus[iq-1] = "^";
+			nqLeft -= 1;
+			//if (iq == nQs) { 
+			if ( nqLeft < 1 ) { 
+				// no more question left
+				feedbackItem = 5;
+				MM_showHideLayers('qLeft','','hide');
+			} else { 
+				feedbackItem = 4; 
+				MM_showHideLayers('continue','','show')
+			}
+		} else {
+			//Incorrect
+			if (userAttempt == 1) { 
+				//First incorrect
+				feedbackItem = 1; 
+				MM_showHideLayers('continue','','show')
+			} else {
+				//Second incorrect
+				arr_qStatus[iq-1] = "*";
+				nqLeft -= 1;
+				for (i=0; i<nItems; i++) {
+					if (arrCorrectAns[i] == 1) {
+						fmDistracter[i].checked = true
+					} else {
+						fmDistracter[i].checked = false
+					}
+				}
+				
+				if (iq == nQs) {
+					feedbackItem = 3; 
+				} else {
+					feedbackItem = 2;
+					MM_showHideLayers('continue','','show');
+				}
+			}	
+		}
+		
+		for (i=0; i<nItems; i++) {
+			fmDistracter[i].disabled = true;
+		}
+		document.Done.disabled = "disabled"
+		MM_showHideLayers('done','','hide')
+	}
+	
+	strQStatus = arr_qStatus.join(";")
+	showDrillFeedback(feedbackItem);
+	
+	if (nqLeft > 1)
+		document.getElementById("qLeft").innerHTML = "<strong>You have " + nqLeft + " questions left.</strong>"
+	else if ( nqLeft == 1 )
+		document.getElementById("qLeft").innerHTML = "<strong>You have " + nqLeft + " question left.</strong>"
+	else {
+		MM_showHideLayers('qLeft','','hide');
+		MM_showHideLayers('Next','','show');
+		MM_showHideLayers('Back','','show');
+		MM_showHideLayers('continue','','hide');
+		document.getElementById("Prompt").innerHTML = "Select <b>Next</b> to continue."
+	}
+}
+//====================== End of Question Here =====================
+//-->
+</script>
+<!-- TemplateBeginEditable name="head" -->
+<script language="JavaScript">
+<!--
+var strCorrectAns = "1,0,1,0,"
+
+function nextQuestion() {
+	closing = false;
+
+	pName = "55090_"
+	var strTemp = (arr_qOrder[iq]>9) ? arr_qOrder[iq] : "0"+arr_qOrder[iq];
+	qOrder = arr_qOrder.join(";");
+	iq += 1;
+	if (iq > nQs)
+		NextPage = "55090_end.htm?iq=" + iq + "&qO=" + qOrder + "&qS=" + strQStatus + "&nQs=" + nQs + "&ua=" + userAttempt;
+	else
+		NextPage = pName + strTemp + ".htm?iq=" + iq + "&qO=" + qOrder + "&qS=" + strQStatus + "&nQs=" + nQs + "&ua=" + userAttempt;
+
+	window.location = NextPage;
+	//goNext (NextPage);
+}
+
+function findNext() {
+	var NextPage = "55100.htm"
+	gotoPage(NextPage);
+}
+
+function findBack() {
+	var BackPage = "55080.htm"
+	gotoPage(BackPage);
+}
+//-->
+</script>
+<!-- TemplateEndEditable -->
+</head>
+
+<body onLoad=" onpage();  MM_preloadImages('../sysimages/background.jpg','../sysimages/exit_2.jpg','../sysimages/done_2.jpg','../sysimages/continue_2.gif')" onUnload="if (closing) exitCourse(false)" >
+
+<div id="moduleTitle">
+  <!-- TemplateBeginEditable name="ModuleTitle" -->
+  Legal Basics for Working at CDC  <!-- TemplateEndEditable --></div>
+
+<div id="LeftHalf">
+  <!-- TemplateBeginEditable name="Content_Left" --><span class="lesTitle">Other Relevant Laws and Regulations</span><br/>
+  <span class="pageTitle">Module Self-Check</span>
+<p>Which two of the following statements correctly describe the Paperwork Reduction Act?</p>
+<form>
+      <table id="disTable"width="100%" border="0" align="left" cellpadding="0" cellspacing="6" >
+        <tr> 
+          <td width="22" valign="top" > 
+              <input type="checkbox" name="fmDistracter" tabindex="1" alt="A. The Act applies to questions asked in writing, electronically, through phone calls, or in-person interviews.">          </td>
+          <td width="20"  valign="top"> <p id="Letter1" class="distrText">A.</p></td>
+          <td colspan="2" valign="top"><p id="cr1" class="distrText">The Act applies to questions asked in writing, electronically, through phone calls, or in-person interviews.</p>          </td>
+        </tr>
+        <tr> 
+          <td valign="top"> 
+              <input type="checkbox" name="fmDistracter" tabindex="2" alt="B. The Act reduces the amount of paper purchased by the federal government." >          </td>
+          <td valign="top"><p id="Letter2" class="distrText">B.</p></td>
+          <td colspan="2" valign="top"><p id="cr2" class="distrText">The Act reduces the amount of paper purchased by the federal government.</p>          </td>
+        </tr>
+        <tr> 
+          <td valign="top"> 
+              <input type="checkbox" name="fmDistracter" tabindex="3" alt="C. The Act ensures that the public will not be burdened by lengthy, irrelevant surveys or paperwork.">          </td>
+          <td valign="top"><p id="Letter3" class="distrText">C.</p></td>
+          <td colspan="2" valign="top"><p id="cr3" class="distrText">The Act ensures that the public will not be burdened by lengthy, irrelevant surveys or paperwork.</p></td>
+        </tr>
+        <tr> 
+          <td height="38" valign="top"> 
+              <input type="checkbox" name="fmDistracter" tabindex="4" alt="D. The Act reduces the public benefit of any information collected by the federal government.">          </td>
+          <td valign="top"><p id="Letter4" class="distrText">D.</p></td>
+          <td colspan="2" valign="top"><p id="cr4" class="distrText">The Act reduces the public benefit of any information collected by the federal government.</p></td>
+        </tr>
+        <tr>
+          <td colspan="4" valign="top"></td>
+        </tr>
+        <tr>
+          <td height="100" colspan="3" valign="top">&nbsp;</td>
+          <td align="left" valign="top"><div id="done" style="position:relative; top:0px; left:20px; visibility:visible"><a href="javascript:judgeInteraction()" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('Done','','../sysimages/done_2.jpg',1)"><img src="../sysimages/done_0.jpg" alt="Done button" name="Done" width="84" height="36"  border="0" id="Done" /></a></div>
+		  <div id="continue" style="position:relative; top:-36px; left:10px; visibility:hidden"><a href="javascript:nextQuestion()" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('btnContinue','','../sysimages/continue_2.gif',1)"><img src="../sysimages/continue_0.gif" alt="continue" name="btnContinue" width="106" height="36" border="0" id="btnContinue" /></a></div>		  </td>
+        </tr>
+      </table>
+</form>
+<div id="qLeft" style="position:absolute; left:100px; top:370px; width:300px; height:20px; z-index:3;"></div>
+  <!-- TemplateEndEditable --></div>
+
+<div id="RightHalf">
+  <!-- TemplateBeginEditable name="Content_Right" -->
+  <img id="pimage" name="pimage" src="../lesson5/images/55090.jpg" width="320" height="383" border="0" alt="Animation of a binder with 5 tabs closing and being put on a shelf." />  <!-- TemplateEndEditable --></div>
+
+<div id="AudioHolder">
+  <!-- TemplateBeginEditable name="ChangeAudioFileHere" -->
+  <!--
+	<object id="swfAudio" name="swfAudio" width="12" height="12">
+  		<param name="movie" value="audios/" >
+  		<param name="quality" value="high" >
+		<param name="play" value="true">
+		<param name="loop" value="false">
+  		<embed src="audios/" quality="high" name="swfAudio" play="true" loop="false" type="application/x-shockwave-flash" width="12" height="12"></embed>
+	</object>
+  -->
+  <!-- TemplateEndEditable --></div>
+
+<div id="Prompt">
+  <!-- TemplateBeginEditable name="Prompt" -->
+  Select all that apply, then click <strong>Done</strong>.<!-- TemplateEndEditable --></div>
+
+<div id="pageNumber">
+  <!-- TemplateBeginEditable name="PageNumber" -->
+  <strong>Legal Basics for Working at CDC</strong><br />
+  Page 9 of 10  <!-- TemplateEndEditable --></div>
+
+<div id="AudioOff">
+<a href='javascript:toggleAudio()' onMouseOver="MM_swapImage('btnAudioOff','','../sysimages/audio_off_2.jpg',1)" onMouseOut='MM_swapImgRestore()'><img src='../sysimages/audio_off_0.jpg' alt='Click to turn audio on' name='btnAudioOff' width='54' height='52' border='0' id='btnAudioOff'></a></div>
+
+<div id="AudioOn">
+<a href='javascript:toggleAudio()' onMouseOver="MM_swapImage('btnAudioOn','','../sysimages/audio_on_2.jpg',1)" onMouseOut='MM_swapImgRestore()'><img src='../sysimages/audio_on_0.jpg' alt='Click to turn audio off' name='btnAudioOn' width='54' height='52' border='0' id='btnAudioOn'></a></div>
+
+<div id="Next">
+<a href="javascript:findNext();" onMouseOver="MM_swapImage('btnNext','','../sysimages/next_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/next_0.jpg" alt="Goes to next page" name="btnNext" width="39" height="52" border="0" id="btnNext"></a></div> 
+
+<div id="Back"><a href="javascript:findBack();" onmouseover="MM_swapImage('btnBack','','../sysimages/back_2.jpg',1)" onmouseout="MM_swapImgRestore()"><img src="../sysimages/back_0.jpg" alt="Goes to previous page" name="btnBack" width="39" height="52" border="0" id="btnBack" /></a></div>
+
+<div id="MainMenu">
+<a href="javascript:toMenu(false)"  onMouseOver="MM_swapImage('btnmain','','../sysimages/mainmenu_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/mainmenu_0.jpg" alt="Main Menu" name="btnmain" width="105" height="38" border="0" id="btnmain"></a></div>
+
+<div id="Exit">
+<a href="javascript:popConfirm();"  onMouseOver="MM_swapImage('btnexit','','../sysimages/exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/exit_0.jpg" alt="Exit" name="btnexit" width="84" height="38" border="0" id="btnexit"></a></div>
+
+<script language="JavaScript" type="text/javascript">
+	setupAudio();
+</script>
+
+</body>
+</html>

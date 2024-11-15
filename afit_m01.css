@@ -1,0 +1,447 @@
+/* NRC css */
+/* all the font classes follow p and start with .nameOftheClass */
+/* all the font ID start with #nameOftheID*/
+
+
+/* basic elements */
+body {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 13px;
+	background: url(sysimages/lesson_main.jpg) no-repeat top left;
+	bgcolor: #000000;
+	margin: 0px;
+	color: #000000;
+	letter-spacing: 0px;
+	line-height: 110%;
+
+	}
+a:link {
+	color:#284DFD;
+	font-weight: bold;
+	text-decoration: none;
+	}
+a:visited {
+	color:#7F92E8;
+	font-weight: bold;
+	text-decoration: none;
+	}
+a:hover {
+	text-decoration: underline;
+	color:#220df8;
+	}
+a:active {
+	text-decoration: none;
+	color: #220df8;
+	}
+
+a.dlink {
+	color:#220df8;
+	font-weight: bold;
+	text-decoration: underline;
+	}
+a.dlink:visited {
+	color:#054EAC;
+	font-weight: bold;
+	text-decoration: underline;
+	}
+
+.drill {
+	margin-top: 2px;
+	margin-bottom: 0px;
+}
+
+p {
+	text-align: left;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	}
+	
+ul {
+	margin-left: 35px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	padding: 0px;
+	list-style-type: disc;
+	/*list-style-image: url(sysimages/Bullet.gif);*/
+	}
+
+ol {
+	margin-left: 35px;
+	margin-top: 5px;
+	padding: 0px;
+
+	}
+
+li {
+	padding-top: 2px; 
+	margin-bottom: 1pt;
+	
+	}
+
+#Content {
+	position:absolute;
+	width:419px;
+	height:42px;
+	z-index:1;
+	left: 120px;
+	top: 61px;
+}
+
+#Content2 {
+	position:absolute;
+	width:836px;
+	height:42px;
+	z-index:1;
+	left: 120px;
+	top: 61px;
+}
+
+
+#expContent {
+	position: absolute; 
+	top: 0px; 
+	width: 733px; 
+	left: 120px;
+
+}
+
+#graphic {
+	position:absolute;
+	left:563px;
+	top:83px;
+	width:396px;
+	height:402px;
+	z-index:0;
+	visibility: visible;
+}
+
+#MainMenu {
+	position:absolute; 
+	top:165px; 
+	left:0; 
+	width:103px; 
+	height:41px; 
+	z-index:1;
+}
+
+#Glossary {
+	position:absolute;
+	left:0;
+	top:204px; 
+	width:103px; 
+	height:41px; 
+	z-index:1;
+}
+
+#Help {
+	position:absolute;
+	left:0;
+	top:243px; 
+	width:103px; 
+	height:41px; 
+	z-index:1;
+}
+
+#Exit {
+	position:absolute;
+	left:0;
+	top:282px; 
+	width:103px; 
+	height:41px; 
+	z-index:1;
+}
+
+#Back {
+	position:absolute;
+	left:804px;
+	top:543px; 
+	width:35px; 
+	height:50px; 
+	z-index:1;
+}
+
+#Next {
+	position:absolute;
+	left:910px;
+	top:527px;
+	width:31px;
+	height:35px;
+	z-index:1;
+}
+
+#Repeat {
+	position:absolute;
+	left:854px;
+	top:538px; 
+	width:47px; 
+	height:1px; 
+	z-index:1;
+}
+
+#TopicH {
+	position:absolute;
+	left:40px;
+	top:11px;
+	color: #FFFFFF;
+	font-size: 13px;
+	font-weight: normal;
+	width:690px;
+	height:18.75pt;
+	z-index:1;
+}
+
+#TopicI {
+	position:absolute;
+	left:40px;
+	top:11px;
+	color: #FFFFFF;
+	font-size: 13px;
+	font-weight: normal;
+	width:690px;
+	height:18.75pt;
+	z-index:1;
+}
+
+#pageN {
+	position:absolute; 
+	left:818px;
+	top:12px;
+	color:#FFFFFF;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: right;
+	width:150px; 
+	height:5; 
+	z-index:1;
+}
+
+#Prompt {
+	position:absolute;
+	left:376px;
+	top:535px;
+	text-align: center;
+	font-size: 13px;
+	font-weight: bold;
+	color:#ffffff;
+	width:350px;
+	height:39px;
+	z-index:1;
+	line-height: 1.1;
+}
+
+#Prompt1 {
+	position:absolute;
+	left:376px;
+	top:543px;
+	text-align: center;
+	font-size: 13px;
+	font-weight: bold;
+	color:#ffffff;
+	width:350px;
+	height:39px;
+	z-index:1;
+	line-height: 1.1;
+}
+
+.topicH { 
+	font-size: 18px;
+	font-weight: normal;  
+	letter-spacing: 0px;
+	line-height: 24px;
+	color:#03C;
+	margin-top: 0px;
+	margin-bottom: 18px;
+}
+
+/* font class*/
+.fbText {
+	font-size: 10pt;
+	color:#000000;
+	margin: 10px;
+	text-align: center;
+}
+
+.distrText {
+	text-align: left;
+	margin: 1px;
+	font-size: 13px;
+}
+
+.reportText {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	color: #FFFFFF;
+	margin: 20px;
+}
+
+.lesTitle {
+	font-size: 21px;
+	font-weight: bold;  
+	line-height:25px;
+	color: #818181;
+}
+
+.pageTitle {
+	font-size: 21px;
+	font-weight: bold;  
+	line-height:25px;
+	color: #1e3489;
+}
+
+#lessonTitle { 
+	position:absolute;
+	left: 33px; 
+	top: 60px; 
+	width: 719px; 
+	font-size: 21px;
+	font-weight: bold;  
+	line-height:25px;
+	color: #818181;
+	z-index: 2;
+}
+
+#AudioOff {
+	position:absolute;
+	left:580px;
+	top:493px; 
+	width:54px; 
+	height:50px; 
+	z-index:1;
+	visibility: hidden;
+}
+
+#AudioOn {
+	position:absolute;
+	left:580px;
+	top:493px; 
+	width:54px; 
+	height:50px; 
+	z-index:1;
+	visibility: hidden;
+}
+
+#AudioHolder {
+	position:absolute;
+	z-index:1;
+	left:0px;
+	top:620px;
+	width:18px;
+	height: 18px;
+	visibility: visible;
+}
+
+#dykAudioHolder {
+	position:absolute;
+	z-index:1;
+	left:0px;
+	top:640px;
+	width:18px;
+	height: 18px;
+	visibility: visible;
+}
+
+ {
+	position:absolute;
+	z-index:1;
+	left:0px;
+	top:620px;
+	width:18px;
+	height: 18px;
+	visibility: visible;
+}
+
+#dlink {
+	position:absolute; 
+	left: 816px; 
+	top: 427px; 
+	width:20px; 
+	height:20px; 
+	z-index:10;
+}
+
+#LeftHalf {
+	position:absolute; 
+	left: 33px; 
+	top: 60px; 
+	width:380px; 
+	height:200px; 
+	z-index:1;
+}
+
+#RightHalf {
+	position:absolute; 
+	width:320px; 
+	height:200px; 
+	z-index:1;
+	left: 430px; 
+	top: 90px; 
+}
+
+#feedback {
+	position:absolute;
+	top:337px;
+	left:50px;
+	width:550px;
+	height:40px;
+	background-color:#E5EFF7;
+	border: 1px solid #4487C5;
+	z-index:12;
+	visibility: hidden;
+}
+
+#question {
+	position:absolute; 
+	top:0px; 
+	left:30px; 
+	width:670px; 
+	height:200px; 
+	z-index:1;
+}
+
+#moduleTitle {
+	position:absolute;
+	left:87px;
+	top:24px;
+	color:#000000;
+	font-size: 13px;
+	font-weight: bold;
+	width:640px;
+	height:15px;
+	z-index:1;
+}
+
+.gridStyle {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:0 1px 1px 0; 
+}
+.gridTop {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:1px 1px 1px 0; 
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight:bold;
+}
+.gridLeft {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:0 1px 1px 1px; 
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-size: 13px;
+}
+.gridFirstSell {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:1px 1px 1px 1px; 
+	font-family:Arial, Verdana, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight:bold;
+}

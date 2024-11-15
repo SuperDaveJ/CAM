@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Popup Information</title>
+<link href="../afitpopup.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/afit_module01.js"></script>
+<script type="text/JavaScript">
+
+
+var gDef = getQueryValue('popterm')
+var arrPopup = new Array();
+var numTern = 5;
+for (var i=0; i<numTern; i++) {
+	arrPopup[i] = "";
+}
+//Incorrect feedback for 1st try
+arrPopup[0]  = "<p class='popupH'>Incorrect. </p><p>One or more of your answers is incorrect.  </p><p>Please try again.</p>"
+arrPopup[1]  = "<p class='popupH'>Incorrect. </p><p>One or more of your answers is incorrect. </p><p>Please try again.</p>"
+//feedback for not select
+arrPopup[2]  = "<p>Before proceeding you must complete the question.</p>"
+//Correct feedback
+arrPopup[3]  = "<p class='popupH'>Correct! </p><p>In the example provided, the recruiter highlighted the benefits of working for NRCS and how the candidate could contribute to the public-service mission of the agency.</p><p>Select Next to continue.</p>";
+//Incorrect feedback for 2nd try
+arrPopup[4]  = "<p class='popupH'>Incorrect.</p><p> In the example provided, the recruiter highlighted the benefits of working for NRCS and how the candidate could contribute to the public-service mission of the agency.</p><p>Select Next to continue.</p>";
+
+
+//alert(gDef)
+</script>
+</head>
+
+<body onload="MM_preloadImages('../sysimages/close_2.jpg');">
+<div id="noGraphicPopupText">
+  <p class="popupH">feedback</p>
+  <p>all</p>
+    <script language="javascript" type="text/javascript" >
+		document.getElementById('noGraphicPopupText').innerHTML="<br />"+arrPopup[gDef-1]+"<br />";
+    </script>
+  
+  <div class="CloseButton">
+    <div align="center"><a href="javascript:self.close();" onClick="javascript:self.close();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CButton','','../sysimages/close_2.jpg',1)"><img src="../sysimages/close_0.jpg" alt="Close Button" name="CButton" width="82" height="37" border="0" id="CButton" /></a></div>
+  </div>
+</div>
+</body>
+</html>

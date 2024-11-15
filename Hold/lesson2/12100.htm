@@ -1,0 +1,473 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- InstanceBegin template="/Templates/lefttext_rightgraphic.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>CDC Culture</title>
+<!-- InstanceEndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../neo_m01.css" title = "neoCSS">
+
+<script language="JavaScript" type="text/JavaScript" src="../scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+
+<!-- InstanceBeginEditable name="EditTur" -->
+<style>
+p {
+	margin-top: 0px;
+	margin-left: 5px;
+}
+.targetP {
+	text-align:right;
+	margin-right: 10px;
+}
+
+#Content {
+	position:absolute; 
+	width:800px; 
+	height:40px;
+}
+</style>
+
+<script language="JavaScript">
+
+</script>
+<!-- InstanceEndEditable -->
+<script language="javascript">
+if (typeof(blnTut) == "undefined")  {
+	initializePage();
+}
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+}
+
+</script>
+<!-- InstanceBeginEditable name="EditScript" -->
+<script language="JavaScript">
+<!--
+function onpage() {
+	init();
+	//document.getElementById("Prompt").style.top = "539px";
+}
+
+MM_reloadPage(true);
+
+function findNext() {
+	var NextPage = "12110.htm"
+	goNext (NextPage);
+}
+function findBack() {
+	var BackPage = "12090.htm"
+	goNext (BackPage);
+}
+
+// Initialization
+var nObj = 5;
+var qStatus = 0;
+var userTries = 0;
+var tryLimit = 2;
+var strTargetOrder = "";
+var strDragOrder = "";
+//selectedDrag is the layer that is dragging
+var selectedDrag = null;
+var dragLayerId;
+var offsetX, offsetY;
+dragLayerArray = new Array("drag1","drag2","drag3","drag4","drag5");
+targetLayerArray = new Array("target1","target2","target3","target4","target5");
+//dragPositionArray and targetPositionArray are a 2D arrays to hold the positions of drag & target objects.
+//index 0->left, 1->top, 2->width, 3->height
+dragPositionArray = new Array(nObj);
+targetPositionArray = new Array(nObj);
+for (var i=0; i<nObj; i++) {
+	dragPositionArray[i] = new Array(4)
+	targetPositionArray[i] = new Array(4)
+}
+var feedbackCorrect=1 //"Correct! Select Next to continue.";
+var feedbackIncorrect= 2 //"Incorrect.  One or more of your answers is incorrect.  Try again.";
+var feedbackIncorrectFinal= 3 //"Incorrect.  The correct order is now displayed.  Select Next to continue.";
+var feedbackNone=4 //"Before proceeding you must complete the question.";
+
+//check browser
+browser = navigator.appName
+browserNum = parseInt(navigator.appVersion)
+N4 = false
+N6 = false
+IE = false
+if ( (browser == "Netscape") && (browserNum < 5) ) N4 = true
+else if ( (browser == "Netscape") && (browserNum >= 5) ) N6 = true
+else IE = true
+
+//set z-index property
+function setzIndex(dragLayer, zOrder) {
+	if (N6) dragLayer.zIndex = zOrder
+	else dragLayer.style.zIndex = zOrder
+}
+
+//position an object at a specific pixel coordinate
+function shiftTo(dragLayer, x, y) {
+	if (N4) dragLayer.moveTo(x, y)
+	else if (N6) {dragLayer.style.left = x; dragLayer.style.top = y;}
+	else {dragLayer.style.pixelLeft = x; dragLayer.style.pixelTop = y;}
+}
+
+function moveBack(dragLayer, intID) {
+	shiftTo(dragLayer, dragPositionArray[intID-1][0], dragPositionArray[intID-1][1])
+}
+
+function moveToTarget(dragLayer, intTargetID) {
+	//intTargetID is actually the target number - 1
+	shiftTo(dragLayer, targetPositionArray[intTargetID][0], targetPositionArray[intTargetID][1])
+}
+
+function setSelectedElem(e) {
+	//Only N4 and IE call this function
+	if (N4) {
+		clickX = e.pageX
+		clickY = e.pagyY
+		//start looking at all the layers on the page from top layer down
+		for (i=document.layers.length-1; i>=0; i--) {
+			testObj = document.layers[i]	//a draggable layer
+			//see if user clicked on a valid layer
+			for (j=0; j<dragLayerArray.length; j++) {
+				if ( (testObj.id == dragLayerArray[j]) && (clickX > testObj.left) && (clickX < testObj.left+testObj.clip.width) && (clickY > testObj.top) && (clickY < testObj.top+testObj.clip.height) ) {
+					selectedDrag = testObj
+					setzIndex(selectedDrag,100)
+					return
+				}
+			}
+		}
+	} else {	//IE
+		imgObj = window.event.srcElement	//image object
+		testObj = imgObj.parentElement	//draggable layer
+		//see if the user clicked on a valid layer
+		dragLayerId = imgObj.parentElement.id
+		for (i=0; i<dragLayerArray.length; i++) {
+			if (dragLayerId == dragLayerArray[i] && testObj) {
+				selectedDrag = testObj
+				setzIndex(selectedDrag,100)
+				return
+			}
+		}
+	}
+}
+
+function dragItem(e) {
+	if (selectedDrag) {
+		if (IE) {
+			//x = event.clientX - offsetX
+			//y = event.clientY - offsetY
+			x = event.clientX - offsetX
+			y = event.clientY - offsetY
+		} else {
+			x = e.pageX - offsetX
+			y = e.pageY - offsetY
+		}
+		shiftTo(selectedDrag, x, y)
+		//prevent further system response to dragging
+		return false
+	}
+}
+
+function grabItem(e) {
+	if (N6) {
+		offsetX = e.layerX
+		offsetY = e.layerY
+		selectedDrag = this
+		setzIndex(selectedDrag,100)
+	} else {
+		setSelectedElem(e)
+		if (selectedDrag) {
+			//MM_showHideLayers('feedback','','hide');
+			MM_showHideLayers('done','','show');
+			if (N4) {
+				offsetX = e.pageX - selectedDrag.left
+				offsetY = e.pageY - selectedDrag.top
+			} else {
+				offsetX = window.event.offsetX
+				offsetY = window.event.offsetY
+			}
+		}
+	//alert("offsetX = " + offsetX + ", offsetY = " + offsetY)
+		//prevent further processing of mouseDown event so that the Macintosh doesn't
+		//display the contextual menu and lets dragging work normally
+		return false
+	}
+}
+
+function releaseItem(e) {
+	if (selectedDrag) {
+		//determine where user released mouse button
+		var releaseX, releaseY;
+		if (IE) {	//Microsoft Internet Explorer
+			releaseX = window.event.clientX
+			releaseY = window.event.clientY
+			//get the integer value of the current dragged layer
+			intDragLayerID = parseInt(dragLayerId.substr(dragLayerId.length-1,1))
+			for (var i=0; i<nObj; i++) {
+				//check to see if there is any match
+				if ( (releaseX > targetPositionArray[i][0]) && (releaseX < targetPositionArray[i][0]+targetPositionArray[i][2]) && (releaseY > targetPositionArray[i][1]) && (releaseY < targetPositionArray[i][1] + targetPositionArray[i][3]) ) {
+					if (strTargetOrder.indexOf((i+1)+",") == -1) {
+						moveToTarget(selectedDrag, i)
+						// add to matched list
+						strTargetOrder = strTargetOrder + (i+1) + ","
+						strDragOrder = strDragOrder + intDragLayerID.toString() + ","
+						//strDraggedLayers = strDraggedLayers
+					} else moveBack(selectedDrag, intDragLayerID)
+					break
+				} else {
+					moveBack(selectedDrag, intDragLayerID)
+					intTemp = strDragOrder.indexOf(intDragLayerID + ",")
+					if (intTemp != -1) {
+						// remove from matched list
+						strTargetOrder = strTargetOrder.substring(0,intTemp) + strTargetOrder.substring(intTemp+2,strTargetOrder.length)
+						strDragOrder = strDragOrder.substring(0,intTemp) + strDragOrder.substring(intTemp+2,strDragOrder.length)
+					}
+				}
+			}
+		} else {	//Other browsers
+			releaseX = e.pageX
+			releaseY = e.pageY
+			if (N6) {
+				//have to hard-code this for N6 - Windows for some reason.  It doesn't see the
+				//"left" or "top" property until it's explicity set like this.
+				document.getElementById("target1").style.left = 10
+				document.getElementById("target1").style.top = 50
+				targetObj = getElementById("target1").style
+				targetWidth = getElementById("target1").offsetWidth			
+				targetHeight = getElementById("target1").offsetHeight
+				targetLeft = parseInt(getElementById("target1").style.left)
+				targetTop = parseInt(getElementById("target1").style.top)
+			} else {
+				targetObj = document.layers["target1"]
+				targetWidth = document.layers["target1"].clip.width
+				targetHeight = document.layers["target1"].clip.height
+				targetLeft = document.layers["target1"].left
+				targetTop = document.layers["target1"].top
+			}
+			
+			//see if user released inside of target
+			if ( (releaseX > targetLeft) && (releaseX < targetLeft + targetWidth) && (releaseY > targetTop) && (releaseY < targetTop + targetHeight) ) {
+			alert("dragged on target.")
+			}
+		}
+
+		//turn off drag
+		setzIndex(selectedDrag, 1)
+		selectedDrag = null
+	}
+}
+
+function attachEvent(obj) {
+	//for N6 only
+	obj.addEventListener("mousedown", grabItem, false)
+	obj.addEventListener("mousemove", dragItem, false)
+	obj.addEventListener("mouseup", releaseItem, false)
+}
+
+function judgeInteraction() {
+MM_showHideLayers('done','','hide');
+	if (strDragOrder.length == 0) {
+		transTerm( feedbackNone);
+	} else {
+		userTries += 1;
+		if (userTries > tryLimit) return	//do nothing, Exit the function.
+		if ( (strTargetOrder == strDragOrder) && (strDragOrder.length/2 == nObj) ) {
+			qStatus = 1
+			//disable interaction
+			disableDrag();
+			transTerm(feedbackCorrect);
+			userTries = tryLimit;
+		} else if (userTries == tryLimit) {
+			// move to correct location
+			for (var i=0; i<nObj; i++) eval("moveToTarget(drag" + (i+1) + ", " + i + ")")
+			//disable interaction
+			disableDrag();
+			transTerm(feedbackIncorrectFinal);
+		} else {
+			// move back incorrect ones
+			var strTempD = strDragOrder;
+			var strTempT = strTargetOrder;
+			for (var i=0; i<strTargetOrder.length/2; i++) {
+				var strTemp = strDragOrder.substr(i*2,1);
+				if (strTargetOrder.substr(i*2,1) != strTemp ) {
+					eval("moveBack(drag" + strTemp + ", " + strTemp + ")")
+					intTemp = strTempD.indexOf(strTemp + ",")
+					if (intTemp != -1) {
+						// remove from matched list
+						strTempD = strTempD.substring(0,intTemp) + strTempD.substring(intTemp+2,strTempD.length)
+						strTempT = strTempT.substring(0,intTemp) + strTempT.substring(intTemp+2,strTempT.length)
+					}
+				}
+			}
+			transTerm(feedbackIncorrect);
+			strDragOrder = strTempD;
+			strTargetOrder = strTempT;
+			//alert("strTempD = " + strTempD + "\rstrTempT = " + strTempT)
+		}
+	}
+	//document.getElementById("feedback").style.visibility = "visible"
+}
+
+function init() {
+	if ( IE ) {
+		var targetStyle;
+		for (var i=0; i<nObj; i++) {
+			/***** Get initial positions *****/
+			//drag layers
+			eval("dragStyle = document.all['drag" + (i+1) + "'].style");
+			dragPositionArray[i][0] = dragStyle.pixelLeft;
+			dragPositionArray[i][1] = dragStyle.pixelTop;
+			eval("dragPositionArray[" + i + "][2] = document.all['drag" + (i+1) + "'].offsetWidth");	
+			eval("dragPositionArray[" + i + "][3] = document.all['drag" + (i+1) + "'].offsetHeight");
+			//target layers
+			eval("targetStyle = document.all['target" + (i+1) + "'].style");
+			targetPositionArray[i][0] = targetStyle.pixelLeft;
+			targetPositionArray[i][1] = targetStyle.pixelTop;
+			eval("targetPositionArray[" + i + "][2] = document.all['target" + (i+1) + "'].offsetWidth");	
+			eval("targetPositionArray[" + i + "][3] = document.all['target" + (i+1) + "'].offsetHeight");
+			//alert("drag=" + (i+1) + ": Left=" + dragPositionArray[i][0] + ", Top=" + dragPositionArray[i][1] + ", Width=" + dragPositionArray[i][2] + ", Height=" + dragPositionArray[i][3] + "\rtarget=" + (i+1) + ": Left=" + targetPositionArray[i][0] + ", Top=" + targetPositionArray[i][1] + ", Width=" + targetPositionArray[i][2] + ", Height=" + targetPositionArray[i][3])
+		}
+		//Initialize mouse events
+		document.onmousedown = grabItem;
+		document.onmousemove = dragItem;
+		document.onmouseup = releaseItem;
+	} else if (N4) {
+		setNSEventCapture()
+		document.onmousedown = grabItem
+		document.onmousemove = dragItem
+		document.onmouseup = releaseItem
+	} else {	//NS 6 and others
+		for (var i=1; i<=nObj; i++) {
+			eval("drag" + i + " = document.getElementById('drag" + i + "')");
+			eval("attachEvent(drag" + i + ")");
+		}
+		
+		window.onmousemove = dragItem
+	}
+}
+
+//set event capture for N4
+function setNSEventCapture() {
+	document.captureEvents(Event.MOUSEDOWN | Event.MOUSEMOVE | Event.MOUSEUP)
+}
+
+function disableDrag() {
+	document.onmousedown = null;
+	document.onmousemove = null;
+	document.onmouseup = null;
+}
+//-->
+</script>
+<!-- InstanceEndEditable -->
+
+</head>
+
+<body onLoad=" onpage();  MM_preloadImages('../sysimages/background.jpg','../sysimages/exit_2.jpg','../sysimages/glossary_2.jpg','../sysimages/done_2.jpg')" onUnload="if (closing) exitCourse(false)" >
+<div id="TopicH" ><!-- InstanceBeginEditable name="EditModuleT" --><b>CDC Culture:</b> CDC Mission and Values<!-- InstanceEndEditable --></div>
+<div id="pageN"><!-- InstanceBeginEditable name="EditPageN" -->Page 10 of 11<!-- InstanceEndEditable --></div>
+<div id="Content" ><!-- InstanceBeginEditable name="EditContents" --> 
+  <p class="topicH">Orientation Check Point</p>
+  
+  <p>The CDC has met many milestones since its creation more than 60 years ago. Match the event with the decade in which it occurred.</p>
+
+<div id="dlink" style="position:absolute; left:820px; top:430px; width:15px; height:15px; z-index:10; visibility:visible"><a class="dlink" href="javascript:goNext ('12100_508.htm')">D</a></div>
+
+<div id="wlBkgd" style="position:absolute; left:200px; width:525px; height:18px; visibility:visible; top: 64px;"> 
+
+  <table width="525" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+      <td width="50" align="left" valign="middle"><p class="distrText">1940s</p></td>
+      <td width="100" align="left" valign="middle"><img src="../sysimages/drop.jpg" alt="Target 1" width="73" height="72"></td>
+      <td width="75" align="left" valign="middle"><img src="../sysimages/visited_a.jpg" alt="Drag item A" width="73" height="72"></td>
+      <td width="300" height="50"><p class="distrText">Epidemic Intelligence Service was born</p>        </td>
+    </tr>
+
+    <tr>
+      <td align="left" valign="middle"><p class="distrText">1950s</p></td>
+      <td align="left" valign="middle"><img src="../sysimages/drop.jpg" alt="Target 2" width="73" height="72"></td>
+      <td align="left" valign="middle"><img src="../sysimages/visited_b.jpg" alt="Drag item B" width="73" height="72"></td>
+      <td align="center"><p class="distrText">Smallpox was eradicated</p></td>
+    </tr>
+
+    <tr>
+      <td align="left" valign="middle"><p class="distrText">1960s</p></td>
+      <td align="left" valign="middle"><img src="../sysimages/drop.jpg" alt="Target 3" width="73" height="72"></td>
+      <td align="left" valign="middle"><img src="../sysimages/visited_c.jpg" alt="Drag item C" width="73" height="72"></td>
+      <td ><p class="distrText">Polio was eradicated</p>        </td>
+    </tr>
+
+    <tr>
+      <td align="left" valign="middle"><p class="distrText">1970s</p></td>
+      <td align="left" valign="middle"><img src="../sysimages/drop.jpg" alt="Target 4" width="73" height="72"></td>
+      <td align="left" valign="middle"><img src="../sysimages/visited_d.jpg" alt="Drag item D" width="73" height="72"></td>
+      <td ><p class="distrText">MMWR was assumed by the CDC</p>        </td>
+    </tr>
+
+    <tr>
+      <td align="left" valign="middle"><p class="distrText">1980s</p></td>
+      <td align="left" valign="middle"><img src="../sysimages/drop.jpg" alt="Target 5" width="73" height="72"></td>
+      <td align="left" valign="middle"><img src="../sysimages/visited_e.jpg" alt="Drag item E" width="73" height="72"></td>
+      <td ><p class="distrText">The public health advisor program was created</p>        </td>
+    </tr>
+  </table>
+</div>
+
+<!-- InstanceEndEditable --></div>
+
+
+<!-- InstanceBeginEditable name="EditaddGraphic" -->
+<!--=============== Target position =================-->
+<div id="target4" style="position:absolute; left:381px; top:279px; width:50px; height:50px; z-index:2;"></div>
+<div id="target1" style="position:absolute; left:381px; top:207px; width:50px; height:50px; z-index:2;"></div>
+<div id="target3" style="position:absolute; left:381px; top:423px; width:50px; height:50px; z-index:2;"></div>
+<div id="target5" style="position:absolute; left:381px; top:134px; width:50px; height:50px; z-index:2;"></div>
+<div id="target2" style="position:absolute; left:381px; top:351px; width:50px; height:50px; z-index:2;"></div>
+
+<!--=========== Drag items positon ===========-->
+<div id="drag3" style="position:absolute; left:481px; top:279px; width:50px; height:40px; z-index:3;">
+<img src="../sysimages/c_0.jpg" alt="C - Drag Item C." width="50" height="50" border="0" /></div>
+
+<div id="drag4" style="position:absolute; left:481px; top:351px; width:48px; height:40px; z-index:3;">
+<img src="../sysimages/d_0.jpg" alt="D - Drag Item D." width="50" height="50" border="0" /></div>
+
+<div id="drag1" style="position:absolute; left:481px; top:135px; width:50px; height:40px; z-index:3;">
+<img src="../sysimages/a_0.jpg" alt="A - Drag Item A." width="50" height="50" border="0" /></div>
+
+<div id="drag2" style="position:absolute; left:481px; top:207px; width:50px; height:40px; z-index:3;">
+<img src="../sysimages/b_0.jpg" alt="B - Drag Item B." width="50" height="50" border="0" /></div>
+
+<div id="drag5" style="position:absolute; left:481px; top:423px; width:50px; height:40px; z-index:3;">
+<img src="../sysimages/e_0.jpg" alt="E - Drag Item E." width="50" height="50" border="0" /></div>
+
+<!-- *********** Done Button ************** -->
+<div id="done" style="position:absolute; left:820px; top:372px; z-index:2;"><a href="javascript:;" onClick="judgeInteraction()" onMouseOver="MM_swapImage('btnDone','','../sysimages/done_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img id="btnDone" name="btnDone" src="../sysimages/done_0.jpg" alt="Done Button" width="82" height="37" border="0" /></a></div>
+
+<!-- InstanceEndEditable -->
+
+
+<div id="Prompt"><!-- InstanceBeginEditable name="EditPrompt" -->Correctly match the items, then click Done.
+<!-- InstanceEndEditable --></div>
+
+<div id="Next"><a href="javascript:findNext();" onMouseOver="MM_swapImage('btnNext','','../sysimages/next_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/next_0.jpg" alt="Goes to next page" name="btnNext" width="36" height="71" border="0" id="btnNext"></a></div> 
+
+<div id="Repeat" ><a href="javascript:refresh()"  onMouseOver="MM_swapImage('btnRepeat','','../sysimages/refresh_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/refresh_0.jpg" alt="Replays the current page" name="btnRepeat" width="47" height="60" border="0" id="btnRepeat"></a></div>
+
+<div id="Back"><a href="javascript:findBack();" onMouseOver="MM_swapImage('btnBack','','../sysimages/back_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/back_0.jpg" alt="Goes to previous page" name="btnBack" width="32" height="55" border="0" id="btnBack"></a></div>
+
+<div id="MainMenu" ><a href="javascript:toMenu(false)"  onMouseOver="MM_swapImage('btnmain','','../sysimages/mainmenu_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/mainmenu_0.jpg" alt="Main Menu" name="btnmain" width="103" height="41" border="0" id="btnmain"></a></div>
+
+<div id="Glossary"><a href="javascript:openGlossary()"  onMouseOver="MM_swapImage('btnglossary','','../sysimages/glossary_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/glossary_0.jpg" alt="Opens a glossary screen" name="btnglossary" width="103" height="41" border="0" id="btnglossary"></a></div>
+
+<div id="Help"><a href="javascript:openHelp();"  onMouseOver="MM_swapImage('btnHelp','','../sysimages/help_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/help_0.jpg" alt="Help" name="btnHelp" width="103" height="41" border="0" id="btnHelp"></a></div>
+
+<div id="Exit"><a href="javascript:popConfirm();"  onMouseOver="MM_swapImage('btnexit','','../sysimages/exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/exit_0.jpg" alt="Exit" name="btnexit" width="103" height="41" border="0" id="btnexit"></a></div>
+
+
+<!-- InstanceBeginEditable name="JSControl" -->
+
+<!-- InstanceEndEditable -->
+
+</body>
+<!-- InstanceEnd --></html>

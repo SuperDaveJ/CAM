@@ -1,0 +1,223 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Centralized Asset Management</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../afit_m01.css" title = "neoCSS">
+
+<script language="JavaScript" type="text/JavaScript" src="../scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/afit_module01.js"></script>
+<style>
+	#content { 
+		height:120px;
+		width:803px; 
+	 }
+	#graphic {
+		left: 113px; 
+		top: 106px; 
+		width:803px; 
+		height:200px; 
+		z-index:0;
+	}
+</style>
+<script language="javascript">
+if (typeof(blnTut) == "undefined")  {
+	initializePage();
+}
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+}
+
+</script>
+<script language="JavaScript">
+<!--
+MM_reloadPage(true);
+guideOn = 0;
+
+function onpage() {
+	//document.getElementById("Prompt").style.top = "539px";	
+}
+
+function findNext() {
+	var NextPage = "11030.htm"
+	goNext (NextPage);
+}
+function findBack() {
+	var BackPage = "11010.htm"
+	goNext (BackPage);
+}
+
+function setGuide() {
+
+	if (guideOn == 0) {
+		MM_showHideLayers('guider2','','show');
+		MM_controlShockwave('FlaAudio1','','Play');	
+		MM_swapImage('guideHL','','images/11020a_2.jpg',1);
+		
+		MM_controlShockwave('FlaAudio4','','StopPlay');
+		MM_showHideLayers('guider5','','hide');
+		MM_controlShockwave('FlaAudio3','','StopPlay');
+		MM_showHideLayers('guider4','','hide');
+		MM_controlShockwave('FlaAudio2','','StopPlay');
+		MM_showHideLayers('guider3','','hide');
+		guideOn3 = 0;
+		guideOn2 = 0;
+		guideOn = 1;
+		MM_showHideLayers('guider4','','hide');
+		MM_showHideLayers('guider3','','hide');
+		MM_showHideLayers('guider5','','hide');
+		MM_swapImage('guideHL2','','images/11020b_0.jpg',1);
+		MM_swapImage('guideHL3','','images/11020c_0.jpg',1);
+	} else {
+		MM_controlShockwave('FlaAudio1','','StopPlay');
+		MM_showHideLayers('guider2','','hide');
+		MM_swapImgRestore();
+		guideOn = 0;
+	}
+}
+
+function setGuide2() {
+
+	if (guideOn2 == 0) {
+		MM_showHideLayers('guider3','','show');
+		MM_controlShockwave('FlaAudio2','','Play');	
+		MM_swapImage('guideHL2','','images/11020b_2.jpg',1);
+		
+		MM_controlShockwave('FlaAudio4','','StopPlay');
+		MM_showHideLayers('guider5','','hide');
+		MM_controlShockwave('FlaAudio3','','StopPlay');
+		MM_showHideLayers('guider4','','hide');
+		MM_controlShockwave('FlaAudio1','','StopPlay');
+		MM_showHideLayers('guider2','','hide');
+		guideOn = 0;
+		guideOn3 = 0;
+		guideOn2 = 1;
+		MM_showHideLayers('guider2','','hide');
+		MM_showHideLayers('guider4','','hide');
+		MM_showHideLayers('guider5','','hide');
+		MM_swapImage('guideHL3','','images/11020c_0.jpg',1);
+		MM_swapImage('guideHL','','images/11020a_0.jpg',1);
+	} else {
+		MM_controlShockwave('FlaAudio2','','StopPlay');
+		MM_showHideLayers('guider3','','hide');
+		MM_swapImgRestore();
+		guideOn2 = 0;
+	}
+}
+
+function setGuide3() {
+
+	if (guideOn3 == 0) {
+		MM_showHideLayers('guider4','','show');
+		MM_controlShockwave('FlaAudio3','','Play');	
+		MM_swapImage('guideHL3','','images/11020c_2.jpg',1);
+		
+		MM_controlShockwave('FlaAudio4','','StopPlay');
+		MM_showHideLayers('guider5','','hide');
+		MM_controlShockwave('FlaAudio2','','StopPlay');
+		MM_showHideLayers('guider3','','hide');
+		MM_controlShockwave('FlaAudio1','','StopPlay');
+		MM_showHideLayers('guider2','','hide');
+		guideOn = 0;
+		guideOn2 = 0;
+		guideOn3 = 1;
+		MM_showHideLayers('guider2','','hide');
+		MM_showHideLayers('guider3','','hide');
+		MM_showHideLayers('guider5','','hide');
+		MM_swapImage('guideHL2','','images/11020b_0.jpg',1);
+		MM_swapImage('guideHL','','images/11020a_0.jpg',1);
+	} else {
+		MM_controlShockwave('FlaAudio3','','StopPlay');
+		MM_showHideLayers('guider4','','hide');
+		MM_swapImgRestore();
+		guideOn3 = 0;
+	}
+}
+
+function audioMute() {
+
+	if (audioOn == 0) {
+		MM_showHideLayers('guider5','','show');
+		MM_controlShockwave('FlaAudio4','','Play');
+		
+		MM_controlShockwave('FlaAudio2','','StopPlay');
+		MM_showHideLayers('guider3','','hide');
+		MM_controlShockwave('FlaAudio3','','StopPlay');
+		MM_showHideLayers('guider4','','hide');
+		MM_controlShockwave('FlaAudio1','','StopPlay');
+		MM_showHideLayers('guider2','','hide');
+		guideOn = 0;
+		guideOn2 = 0;
+		guideOn3 = 0;
+		audioOn = 1;
+		MM_swapImage('guideHL3','','images/11020c_0.jpg',1);
+		MM_swapImage('guideHL2','','images/11020b_0.jpg',1);
+		MM_swapImage('guideHL','','images/11020a_0.jpg',1);
+	} else {
+		MM_controlShockwave('FlaAudio4','','StopPlay');
+		MM_showHideLayers('guider5','','hide');
+		audioOn = 0;
+	}
+}
+
+
+
+function MM_controlShockwave(objStr,x,cmdName,frameNum) { //v3.0
+  var obj=MM_findObj(objStr);
+  if (obj) eval('obj.'+cmdName+'('+((cmdName=='GotoFrame')?frameNum:'')+')');
+}
+//-->
+</script>
+<script src="../scripts/AC_RunActiveContent.js" type="text/javascript"></script>
+</head>
+
+<body onLoad=" onpage();  MM_preloadImages('../sysimages/exit_2.jpg','../sysimages/glossary_2.jpg','../sysimages/back_2.jpg','images/11020a_2.jpg','images/11020b_2.jpg','images/11020c_2.jpg')" onUnload="if (closing) exitCourse(false)" >
+<div id="TopicH" >About  Performance Based Outcomes</div>
+<div id="pageN">Page 2 of 5</div>
+<div id="Content2" >
+<p class="topicH"><strong>Key Stakeholders and Responsibilities</strong></p>
+  <p>There  are various stakeholders within the PBO, WSA, and EMA processes who perform a  variety of roles and are accountable for different yet mutual responsibilities.  Can you think of the stakeholders involved in each process and what their role  and responsibility might be?</p>
+</div>
+
+
+
+
+<div id="" style="position:absolute; left:190px; top:198px; width:50px; height:40px; z-index:10;">
+  <div align="center"><a href="javascript:transTerm(1)" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image13','','images/11020a_2.jpg',1)"><img src="images/11020a.jpg" alt="Selectable graphic of the PBO acronym." name="Image13" width="190" height="189" border="0"></a></div>
+</div>
+
+<div id="" style="position:absolute; left:398px; top:196px; width:50px; height:40px; z-index:10;">
+  <div align="center"><a href="javascript:transTerm(2)" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image14','','images/11020b_2.jpg',1)"><img src="images/11020b.jpg" alt="Selectable graphic of the WSA acronym." name="Image14" width="190" height="189" border="0"></a></div>
+</div>
+
+<div id="" style="position:absolute; left:604px; top:196px; width:50px; height:40px; z-index:10;">
+  <div align="center"><a href="javascript:transTerm(3)" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image15','','images/11020c_2.jpg',1)"><img src="images/11020c.jpg" alt="Selectable graphic of the EMA acronym." name="Image15" width="190" height="189" border="0"></a></div>
+</div>
+
+<div id="Prompt1">Select Next to continue.</div>
+
+<div id="Next"><a href="javascript:findNext();" onMouseOver="MM_swapImage('btnNext','','../sysimages/next_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/next_0.jpg" alt="Goes to next page" name="btnNext" width="36" height="71" border="0" id="btnNext"></a></div> 
+
+<div id="Repeat" ><a href="javascript:refresh()"  onMouseOver="MM_swapImage('btnRepeat','','../sysimages/refresh_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/refresh_0.jpg" alt="Replays the current page" name="btnRepeat" width="47" height="60" border="0" id="btnRepeat"></a></div>
+
+<div id="audio" style="position:absolute; left: 742px; top: 543px;"><a href="javascript:audioMute();" onMouseOver="MM_swapImage('btnAudio','','../sysimages/audio_a_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/audio_a_0.jpg" alt="Audio On/Off" name="btnAudio" width="57" height="55" border="0" id="btnBack"></a></div>
+
+<div id="Back"><a href="javascript:findBack();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image12','','../sysimages/back_2.jpg',1)"><img src="../sysimages/back_0.jpg" name="Image12" width="32" height="55" border="0" alt="Goes to previous page"></a></div>
+
+<div id="MainMenu" ><a href="javascript:toMenu(false)"  onMouseOver="MM_swapImage('btnmain','','../sysimages/mainmenu_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/mainmenu_0.jpg" alt="Main Menu" name="btnmain" width="103" height="41" border="0" id="btnmain"></a></div>
+
+<div id="Glossary"><a href="#"  onMouseOver="MM_swapImage('btnglossary','','../sysimages/glossary_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/glossary_0.jpg" alt="Opens a glossary screen" name="btnglossary" width="103" height="41" border="0" id="btnglossary"></a></div>
+
+<div id="Help"><a href="#"  onMouseOver="MM_swapImage('btnHelp','','../sysimages/help_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/help_0.jpg" alt="Help" name="btnHelp" width="103" height="41" border="0" id="btnHelp"></a></div>
+
+<div id="Exit"><a href="javascript:popConfirm();"  onMouseOver="MM_swapImage('btnexit','','../sysimages/exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/exit_0.jpg" alt="Exit" name="btnexit" width="103" height="41" border="0" id="btnexit"></a></div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>CDC NEO WBT</title>
+<!-- TemplateEndEditable -->
+<link rel="stylesheet" type="text/css" href="../cdc_neo.css" title = "cdcCSS">
+
+<script language="JavaScript" type="text/JavaScript" src="../scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/afit_module01.js"></script>
+
+<script language="javascript">
+<!--
+initializePage();
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+//-->
+}
+
+</script>
+<!-- TemplateBeginEditable name="head" -->
+<script language="JavaScript">
+<!--
+MM_reloadPage(true);
+
+function onpage() {
+}
+
+function findNext() {
+	var NextPage = "0.htm"
+	gotoPage(NextPage);
+}
+
+function findBack() {
+	var BackPage = "0.htm"
+	gotoPage(BackPage);
+}
+//-->
+</script>
+<!-- TemplateEndEditable -->
+</head>
+
+<body onLoad=" onpage();  MM_preloadImages('../sysimages/background.jpg','../sysimages/exit_2.jpg','../sysimages/back_2.jpg')" onUnload="if (closing) exitCourse(false)" >
+
+<div id="moduleTitle">
+  <!-- TemplateBeginEditable name="ModuleTitle" -->
+  Legal Basics for Working at CDC  <!-- TemplateEndEditable --></div>
+
+<div id="lessonTitle">
+  <!-- TemplateBeginEditable name="LessonTitle" -->
+  Lesson Title
+  <br/>
+  <span class="pageTitle">Page Title</span>  <!-- TemplateEndEditable --></div>
+
+<div id="Content">
+  <!-- TemplateBeginEditable name="ContentArea" -->
+  <p>Content</p>
+  <p></p> 
+  <!-- TemplateEndEditable --></div>
+
+<!-- TemplateBeginEditable name="DragNDropRegion" -->
+
+<!-- TemplateEndEditable -->
+
+<div id="AudioHolder">
+  <!-- TemplateBeginEditable name="ChangeAudioFileHere" -->
+	<object id="swfAudio" name="swfAudio" width="12" height="12">
+  		<param name="movie" value="audios/55040.swf" >
+  		<param name="quality" value="high" >
+		<param name="play" value="true">
+		<param name="loop" value="false" />
+  		<embed src=audios/55040.swf"" quality="high" name="swfAudio" loop="false" type="application/x-shockwave-flash" width="12" height="12"></embed>
+	</object>
+  <!-- TemplateEndEditable --></div>
+
+<div id="Prompt">
+  <!-- TemplateBeginEditable name="Prompt" -->
+  Select <strong>Next</strong> to continue.  <!-- TemplateEndEditable --></div>
+
+<div id="pageNumber">
+  <!-- TemplateBeginEditable name="PageNumber" -->
+  <strong>Legal Basics for Working at CDC</strong><br />
+  Page # of #  <!-- TemplateEndEditable --></div>
+
+<div id="AudioOff">
+<a href='javascript:toggleAudio()' onMouseOver="MM_swapImage('btnAudioOff','','../sysimages/audio_off_2.jpg',1)" onMouseOut='MM_swapImgRestore()'><img src='../sysimages/audio_off_0.jpg' alt='Click to turn audio on' name='btnAudioOff' width='54' height='52' border='0' id='btnAudioOff'></a></div>
+
+<div id="AudioOn">
+<a href='javascript:toggleAudio()' onMouseOver="MM_swapImage('btnAudioOn','','../sysimages/audio_on_2.jpg',1)" onMouseOut='MM_swapImgRestore()'><img src='../sysimages/audio_on_0.jpg' alt='Click to turn audio off' name='btnAudioOn' width='54' height='52' border='0' id='btnAudioOn'></a></div>
+
+<div id="Next">
+<a href="javascript:findNext();" onMouseOver="MM_swapImage('btnNext','','../sysimages/next_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/next_0.jpg" alt="Goes to next page" name="btnNext" width="39" height="52" border="0" id="btnNext"></a></div> 
+
+<div id="Back"><a href="javascript:findBack();" onmouseover="MM_swapImage('btnBack','','../sysimages/back_2.jpg',1)" onmouseout="MM_swapImgRestore()"><img src="../sysimages/back_0.jpg" alt="Goes to previous page" name="btnBack" width="39" height="52" border="0" id="btnBack" /></a></div>
+
+<div id="MainMenu">
+<a href="javascript:toMenu(false)"  onMouseOver="MM_swapImage('btnmain','','../sysimages/mainmenu_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/mainmenu_0.jpg" alt="Main Menu" name="btnmain" width="105" height="38" border="0" id="btnmain"></a></div>
+
+<div id="Exit">
+<a href="javascript:popConfirm();"  onMouseOver="MM_swapImage('btnexit','','../sysimages/exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/exit_0.jpg" alt="Exit" name="btnexit" width="84" height="38" border="0" id="btnexit"></a></div>
+
+<script language="JavaScript" type="text/javascript">
+	setupAudio();
+</script>
+
+</body>
+</html>

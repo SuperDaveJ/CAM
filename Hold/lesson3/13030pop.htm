@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Popup Information</title>
+<link href="../cdcpopup.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+<script type="text/JavaScript">
+
+var gDef = getQueryValue('popterm')
+var arrPopup = new Array();
+var numTern = 3;
+for (var i=0; i<numTern; i++) {
+	arrPopup[i] = "";
+}
+
+arrPopup[0]  = "<p class='popupH'>Infants and Toddlers</p><p>The CDC’s primary goal for the health of infants and toddlers is to increase the number that have a strong start for healthy and safe lives.</p><p>Increasing early identification, tracking, and follow-up of infants and toddlers with special health care and developmental needs are specific strategies to reach this goal.</p><p>To ensure the health of infants and toddlers, CDC promotes:</p><p><ul><li>Healthy pregnancies and birth outcomes.</li><li>Social and physical environments that support the health, safety, and development of infants and toddlers.</li><li>Optimal development among infants and toddlers.</li><li>Access to, and receipt of, quality, comprehensive, pediatric health and dental services.</li></ul></p>";
+
+arrPopup[1]  = "<p class='popupH'>Children </p><p>CDC’s primary goal for the health of children is to help them be safe, strong, and ready to learn. CDC strives to improve the behaviors that promote children’s health and well-being in future life stages.</p><p>To ensure the health of children, CDC promotes:</p><p><ul><li>Social and physical environments that are accessible and support health, safety, and development, as well as promote healthy behaviors.</li><li>Social, emotional, and mental well-being.</li><li>Early identification, tracking, prevention, and follow-up treatment of chronic disease and health conditions in children.</li><li>Early identification, tracking, prevention, and follow-up of children with, or at risk for, developmental delays, disorders, or disabilities.</li><li>Access to—and receipt of—quality, comprehensive, pediatric health, dental, and mental services.</li></ul></p>";
+
+arrPopup[2]  = "<p class='popupH'>Adolescents </p><p>CDC’s primary goal for the health of adolescents is to increase the number of young people who are prepared to be healthy, safe, independent, and productive members of society. </p><p>CDC reaches this goal by preventing substance abuse, injury, violence, suicide, HIV, STDs, and unintended pregnancies. </p><p>To ensure the health of adolescents, CDC promotes:</p><p><ul><li>Social and physical environments that support health, safety, and development, promote healthy behaviors, and are accessible.</li><li>Access to, and receipt of, recommended quality, effective, evidence-based preventative and health care services including dental and mental health care</li><li>Social, emotional, and mental well-being.</li><li>Healthy activity and nutrition behaviors among adolescents.</li></ul></p>";
+
+arrPopup[3]  = "<p class='popupH'>Adults </p><p>CDC’s primary goal for the health of adults is to increase the number of adults who are healthy and able to participate fully in life activities and enter into their later years with optimum health. </p><p>In addition to preventing infectious and chronic diseases, injury, and violence, CDC strives to prevent chronic diseases and suicide in adults.</p><p>To ensure the health of adults, CDC promotes:</p><p><ul><li>Social and physical environments that support health, safety, and development, promote healthy behaviors, and are accessible.</li><li>Access to and receipt of recommended quality, effective, evidence-based preventative and health care services including dental and mental health care.</li></ul></p>";
+
+arrPopup[4]  = "<p class='popupH'>Seniors </p><p>CDC’s primary goal for the health of seniors is to increase the number who live longer, high-quality, productive, and independent lives. </p><p>CDC strives to prevent infectious and chronic diseases, injury, violence, and suicide in seniors as well as improve behaviors that promote health and well-being.</p><p>To ensure the health of seniors, CDC promotes:</p><p><ul><li>Social and physical environments that support health, safety, and development, promote healthy behaviors, and are accessible.</li><li>Access to, and receipt of, recommended quality, effective, evidence-based preventative and health care services including dental and mental health care.</li><li>Independence and social functioning.</li> <li>Optimal physical, emotional, mental, and sexual health.</li></ul></p>";
+
+
+</script>
+</head>
+
+<body onload="MM_preloadImages('../sysimages/close_2.jpg');">
+<div id="noGraphicPopupText">
+  <p class="popupH"></p>
+  <script language="javascript" type="text/javascript" >
+	document.getElementById('noGraphicPopupText').innerHTML=arrPopup[gDef-1];
+</script>
+  <div class="CloseButton">
+    <div align="center"><a href="javascript:self.close();" onClick="javascript:self.close();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CButton','','../sysimages/close_2.jpg',1)"><img src="../sysimages/close_0.jpg" alt="Close Button" name="CButton" width="82" height="37" border="0" id="CButton" /></a></div>
+  </div>
+</div>
+</body>
+</html>

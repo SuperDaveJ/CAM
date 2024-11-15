@@ -1,0 +1,394 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- InstanceBegin template="/templates/lefttext_rightgraphic.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>CDC Supervisor Development Challenge WBT Precourse</title>
+<!-- InstanceEndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../afit_m01.css" title = "neoCSS">
+
+<script language="JavaScript" type="text/JavaScript" src="../scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/afit_module01.js"></script>
+
+<!-- InstanceBeginEditable name="EditTur" -->
+<script language="JavaScript">
+
+</script>
+<!-- InstanceEndEditable -->
+<script language="javascript">
+if (typeof(blnTut) == "undefined")  {
+	initializePage();
+}
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+}
+
+</script>
+<!-- InstanceBeginEditable name="EditScript" -->
+<script language="JavaScript">
+<!--
+MM_reloadPage(true);
+var browser;
+if ( parseInt(navigator.appVersion.charAt(0)) >= 4 ) {
+	if ( navigator.appName == "Netscape" ) {
+		browser = "NS";
+	} else if ( navigator.appVersion.indexOf("MSIE") != -1 ) {
+		browser = "IE";
+	}
+}
+// the following functions work for IE 4+ only
+// ----------------  Interaction Functions -------------------------------
+//Global variables
+var fbInnText = "";
+var fb_X = 0;
+var fb_Y = 0;
+var feedback = true;		//feedback
+var nextButton = true;		//Is there a Next button for next question
+var blnRandom = true;		//Are questions need to be randomized?
+var blnInTest = true;		//Is the user in test? If yes, disable some buttons.
+var userMode = 1;			//1 = scored, 2 = not scored (or review)			
+var userAns = 0;			//user answer for Multiple Choice questions
+arrUserAns = new Array();	//user answer for Multiple Answer questions
+var triesUser = 0;
+var triesLimit = 1;
+var qStatus = 0;			//question status. 1=correct, 0=incorrect
+var qIndex = 0;				//qIndex is an index of question order (qOrder)
+var blnChoiceMade = false;	//Has user made any choice?
+
+var nQs = 3;				//Total number of questions
+var nQtoShow = nQs;			//Number of questiones to be showed for each round
+var nTotalCorrect = 0;		//Total number of questions that were answered correctly
+var nTotalCompleted = 0;		//Total number of questions that were completed including correct and incorrect
+var strSkipped = "";		//a string - questions that are skipped.
+arrSkipped = new Array();	//an array - questions that are skipped.
+var strPageNumber = "";
+arrPageNumber = new Array();
+
+arrQs = new Array(nQs);
+qOrder_seq = new Array(nQs);
+qOrder = new Array(nQs);
+for (var i=0; i<nQs; i++) {
+	arrQs[i] = new Array(9);
+	qOrder_seq[i] = i;
+	arrPageNumber[i] = i + 1;
+}
+arrLetters = new Array('A', 'B', 'C', 'D', 'E', 'F', 'G');
+
+fdbkNoAnswer = "Please select an answer.";
+fdbkIncorrect = "Incorrect.  Select Continue for the next question."
+fdbkCorrect = "Correct!  Select Continue for the next question."
+fdbkIncorrect_2 = "Incorrect.  The correct answer is displayed."
+fdbkIncorrect_Final = "Incorrect.  The correct answer is displayed.  Select Next to continue."
+fdbkCorrect_Final = "Correct!  Select Next to continue."
+//Question #1
+arrQs[0][0] = 1; //#1
+arrQs[0][1] = 2; //Q type
+arrQs[0][2] = 4; // distr num
+arrQs[0][3] = "Which two of the following promotions affect Officers' pay?"; //question stem
+//distractors separated with "#"
+arrQs[0][4] = "Temporary Promotion#Temporary Proficiency Promotion#Permanent Promotion#Exceptional Proficiency Promotion";
+arrQs[0][5] = new Array(1,0,0,1); 	//corrct answer
+arrQs[0][6] = new Array();	//user answer
+arrQs[0][7] = 0; 	//User attempts
+arrQs[0][8] = 0; 	//question status, 0=incorrect, 1=correct
+
+//Question #2
+arrQs[1][0] = 2;
+arrQs[1][1] = 1;
+arrQs[1][2] = 4;
+arrQs[1][3] = "Which one of the following is NOT a criterion of an Officer's temporary Promotion?";
+arrQs[1][4] = "Current Grade Level#Time-in-grade#Training and Experience#Time-in-service";
+arrQs[1][5] = new Array(1,0,0,0);
+arrQs[1][6] = new Array();
+arrQs[1][7] = 0;
+arrQs[1][8] = 0; 	//question status, 0=incorrect, 1=correct
+
+//Question #3
+arrQs[2][0] = 3;
+arrQs[2][1] = 2;
+arrQs[2][2] = 4;
+arrQs[2][3] = "Which three of the following documents can be reviewed by the Board when considering an Officer for  promotion?";
+arrQs[2][4] = "Reviewing Official's Statement#Medical Records#Curriculum Vitae#Promotion Information Report";
+arrQs[2][5] = new Array(1,0,1,1);
+arrQs[2][6] = new Array();
+arrQs[2][7] = 0;
+arrQs[2][8] = 0; 	//question status, 0=incorrect, 1=correct
+
+function onpage() {
+}
+
+function findNext() {
+	var NextPage = "35100.htm"
+	goNext (NextPage);
+}
+function findBack() {
+	var BackPage = "35080.htm"
+	goNext (BackPage);
+}
+
+function getRandom(topLimit) {   
+	return Math.floor(Math.random()*topLimit)
+}
+
+function setQOrder() {
+	// Set question order
+	if (!blnRandom)
+		qOrder = qOrder_seq;
+	else
+		doRandomization();
+}
+	
+function doRandomization() {
+	// Generate numberOfQuestoins unique random numbers
+	arrTemp = new Array(nQs);
+		
+	for (i=0; i<nQs; i++) arrTemp[i]=-1
+	// create a temp array of nQs unique random numbers
+	for (i=0; i<nQs; i++) {
+		for (j=0; j<100000; j++) {
+			blnFound = false;
+			intTemp = getRandom(nQs);
+			for (k=0; k<nQs; k++) {
+				if (arrTemp[k] == intTemp )  {
+					blnFound = true;
+					break;
+				}
+			}
+			if (!blnFound) {
+				arrTemp[i] = intTemp;
+				break;
+			}
+		}
+	}
+	for (i=0; i<nQs; i++) {
+		k = arrTemp[i];
+		qOrder[i] = qOrder_seq[k];
+	}
+}
+
+function judgeInteraction(qNum) {
+	var qType = arrQs[qNum][1];
+	var nItems = arrQs[qNum][2];
+
+	var strTemp = "";
+	qDistracter = document.forms[0].qDistracter
+	for (var i=0; i<nItems; i++) {
+		if ( qDistracter[i].checked ) {
+			strTemp = strTemp + "1,";
+		} else {
+			strTemp = strTemp + "0,";
+		}
+	}
+	arrQs[qNum][6] = strTemp.split(",")
+
+	var unChecked = 0;
+	var nCorrect = 0;
+	var nIncorrect = 0;
+	var nChecksMatched = 0;
+	for (i=0; i<nItems; i++) {
+		if (arrQs[qNum][6][i] == 0) unChecked += 1;
+		if (arrQs[qNum][6][i] == arrQs[qNum][5][i]) nCorrect += 1
+	}
+	if (unChecked == nItems) {
+		//No answer selected
+		showFeedback(fdbkNoAnswer);
+		return;
+	}
+
+	arrQs[qNum][7] += 1;	//increment user attempt
+	
+	if (nCorrect == nItems) {
+		//Correct answer
+		arrQs[qNum][8] = 1;
+		nTotalCompleted += 1;
+		showFeedback(fdbkCorrect);
+	} else {
+		//Incorrect answer
+		if (arrQs[qNum][7] == 2) {
+			//second try, show correct
+			for (i=0; i<nItems; i++) {
+				if (arrQs[qNum][5][i] == 1) {
+					qDistracter[i].checked = true
+				} else {
+					qDistracter[i].checked = false
+				}
+			}
+			nTotalCompleted += 1;
+			showFeedback(fdbkIncorrect_2);
+		} else {
+			//first try
+			showFeedback(fdbkIncorrect);
+		}
+	}
+	
+	nTotalCorrect += arrQs[qNum][8]; //increment correct number
+	if (nTotalCompleted == nQs) {
+		document.all["qNumber"].innerText = "";
+		MM_showHideLayers('continue','','hide');
+		if ( nTotalCorrect == nQs ) showFeedback(fdbkCorrect_Final)
+		else showFeedback(fdbkIncorrect_Final)
+	} else MM_showHideLayers('continue','','show')
+}
+
+function nextQuestion() { //when click Continue button, check which way to go
+	MM_showHideLayers('continue','','hide');
+	MM_showHideLayers('feedback','','hide');
+	if (qIndex < nQs-1) qIndex += 1;	//increment question
+	else qIndex = 0;
+	var blnFindLeft = false
+	for(var i=qIndex; i<nQs; i++) { //find the first incorrect one from the rest of the questions
+		var j=qOrder[i]
+		if ( arrQs[j][8] == 0 ) { //if found, quit
+		blnFindLeft = true			
+		break
+		}
+	}
+	if (blnFindLeft == false) { //if not found, start from the beginning
+		for(var i=0; i<nQs; i++) {
+			var j=qOrder[i]
+			if ( arrQs[j][8] == 0 ) {
+				blnFindLeft = true
+				break
+			}
+		}
+	}
+	qIndex = i; // get the start question number
+	writeQuestion(qOrder[qIndex]); //write the question on the screen
+}
+
+function writeQuestion(qNum) {
+	//reset variables
+	userAns = 0;
+	//arrUserAns = new Array();
+	triesUser = 0;
+	qStatus = 0;	//question status. 1=correct, 0=incorrect
+	blnChoiceMade = false;
+	
+	var nItems = arrQs[qNum][2];
+	for (var j=0; j<nItems; j++)
+		arrUserAns[j] = 0
+	distracters = new Array(nItems);
+	distracters = arrQs[qNum][4].split("#");
+	if (arrQs[qNum][1] == 1 ) qType = "radio"	//multiple choice
+	else qType = "checkbox"						//multiple correct
+	
+	var strHTML = "";
+	strHTML += "<form><table width='100%' border='0' cellpadding='4' cellspacing='0'>";
+	strHTML += "<tr><td colspan='3'><p>" + arrQs[qNum][3] + "</p></td></tr>"
+	strHTML += "<tr><td colspan='3'><p>&nbsp;</p></td></tr>"
+	for (var i=0; i<nItems; i++) {
+		strHTML += "<tr><td width='20' valign='middle'>"
+		strHTML += "<input type='" + qType + "' name='qDistracter' tabindex='" + (i+1) + "' onclick='hideFeedback()' /></td>"
+		strHTML += "<td width='15' valign='middle'><p>" + arrLetters[i] + ".</p></td>"
+		strHTML += "<td valign='middle'><p>" + distracters[i] + "</p></td></tr>"
+	}
+	strHTML += "<tr><td colspan='3' align='center' height='60' valign='bottom'>"
+	strHTML += "<a href='javascript:judgeInteraction(" + qNum + ")' "
+	strHTML += "onMouseOver='MM_swapImage(\"btnDone\", \"\", \"../sysimages/done_2.jpg\", 1)' "
+	strHTML += "onMouseOut='MM_swapImgRestore()'>"
+	strHTML += "<img src='../sysimages/done_0.jpg' id='btnDone' name='btnDone' width='96' "
+	strHTML += "height='41' border='0' atl='Continue button' tabindex=" + (nItems+1) + " />"
+	strHTML += "</a></td></tr></table></form>"
+		
+	document.all["drillQuestion"].innerHTML = strHTML;
+	document.all["qNumber"].innerHTML = "<strong>You have " + (nQs - nTotalCompleted) + " question left.</strong>" ;
+	hideFeedback();
+}
+function showFeedback(fbInnText) {
+	MM_showHideLayers('btnDone','','hide');
+	MM_showHideLayers('feedback','','show');
+	MM_setTextOfLayer('fdbkText','',fbInnText);
+}
+
+function hideFeedback() {
+	MM_showHideLayers('btnDone','','show');
+	MM_showHideLayers('feedback','','hide');
+}
+
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+<!-- InstanceEndEditable -->
+
+</head>
+
+<body onLoad=" onpage();  MM_preloadImages('../sysimages/background.jpg','../sysimages/exit_2.jpg','../sysimages/glossary_2.jpg','../sysimages/start_2.gif','../sysimages/continue_2.gif')" onUnload="if (closing) exitCourse(false)" >
+<div id="TopicH" ><!-- InstanceBeginEditable name="EditModuleT" -->The Fellows, SES, SBRS, and Commissioned Corps / Corps Promotions, Awards, and Leave<!-- InstanceEndEditable --></div>
+<div id="pageN"><!-- InstanceBeginEditable name="EditPageN" -->Page 9 of 14 <!-- InstanceEndEditable --></div>
+<div id="Content" ><!-- InstanceBeginEditable name="EditContents" --> 
+  <p class="topicH">Chanllenge Point </p>
+  <div id="drillQuestion" style="top:63px; width:400px">
+  <p><br>
+    Answer the following questions regarding Commissioned Officer Promotions</p>
+  <p>Select Start to begin.</p>
+  <div >
+    <div align="center"><a href="javascript:setQOrder(); writeQuestion(qOrder[0]);" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('btnstart','','../sysimages/start_2.gif',1)"><img src="../sysimages/start_0.gif" alt="Start" name="btnstart" width="96" height="41" border="0"></a></div>
+  </div>
+</div>
+<div id="PageText" style="position:absolute; width:214px; height:14px; z-index:3; left: 208px; top: 8px;">
+  <div align="right" id="qNumber"></div>
+</div>
+
+<!-- <script language="JavaScript">
+	setQOrder();
+	writeQuestion(qOrder[0]);
+</script> -->
+<div id="feedback" style="position:absolute; top:218px; left:15px; width:370px;"> 
+    <div id="fdbkText" class="fbText" style="text-align:center"></div>
+</div>
+
+<div id="continue" style="position:absolute; left:180px; top:300px; width:96; height:40; z-index:5; visibility:hidden;">
+<a href="javascript:nextQuestion()" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('btnContinue','','../sysimages/continue_2.gif',1)"><img src="../sysimages/continue_0.gif" alt="continue" name="btnContinue" width="96" height="41" border="0"></a></div>
+
+<!-- InstanceEndEditable --></div>
+
+
+<!-- InstanceBeginEditable name="EditaddGraphic" --><div id="graphic" ><img src="../m3_lessons/images/35090.jpg" alt="Graphic of a Commissioned Corps Officer with an Award." width="368" height="398"></div>
+<!-- InstanceEndEditable -->
+
+
+<div id="Prompt"><!-- InstanceBeginEditable name="EditPrompt" -->Select Next to continue.<!-- InstanceEndEditable --></div>
+
+<div id="Next"><a href="javascript:findNext();" onMouseOver="MM_swapImage('btnNext','','../sysimages/next_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/next_0.jpg" alt="Goes to next page" name="btnNext" width="36" height="71" border="0" id="btnNext"></a></div> 
+
+<div id="Repeat" ><a href="javascript:refresh()"  onMouseOver="MM_swapImage('btnRepeat','','../sysimages/refresh_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/refresh_0.jpg" alt="Replays the current page" name="btnRepeat" width="47" height="60" border="0" id="btnRepeat"></a></div>
+
+<div id="Back"><a href="javascript:findBack();" onMouseOver="MM_swapImage('btnBack','','../sysimages/back_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/back_0.jpg" alt="Goes to previous page" name="btnBack" width="32" height="55" border="0" id="btnBack"></a></div>
+
+<div id="MainMenu" ><a href="javascript:toMenu(false)"  onMouseOver="MM_swapImage('btnmain','','../sysimages/mainmenu_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/mainmenu_0.jpg" alt="Main Menu" name="btnmain" width="103" height="41" border="0" id="btnmain"></a></div>
+
+<div id="Glossary"><a href="javascript:openGlossary()"  onMouseOver="MM_swapImage('btnglossary','','../sysimages/glossary_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/glossary_0.jpg" alt="Opens a glossary screen" name="btnglossary" width="103" height="41" border="0" id="btnglossary"></a></div>
+
+<div id="Help"><a href="javascript:openHelp();"  onMouseOver="MM_swapImage('btnHelp','','../sysimages/help_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/help_0.jpg" alt="Help" name="btnHelp" width="103" height="41" border="0" id="btnHelp"></a></div>
+
+<div id="Exit"><a href="javascript:popConfirm();"  onMouseOver="MM_swapImage('btnexit','','../sysimages/exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/exit_0.jpg" alt="Exit" name="btnexit" width="103" height="41" border="0" id="btnexit"></a></div>
+
+
+<!-- InstanceBeginEditable name="JSControl" --><!-- InstanceEndEditable -->
+
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Popup Information</title>
+<link href="../cdcpopup.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+<script type="text/JavaScript">
+
+var gDef = getQueryValue('popterm')
+var arrPopup = new Array();
+var numTern = 3;
+for (var i=0; i<numTern; i++) {
+	arrPopup[i] = "";
+}
+
+arrPopup[0]  = "<p class='popupH'>Global Health Promotion</p><p>To help people live safer, healthier and longer lives, CDC globally strives to:</p><p><ul><li>Prevent and control infectious diseases and their consequences.</li><li>Prevent infant and child morbidity and mortality.</li><li>Prevent noncommunicable diseases and their consequences.</li><li>Prevent injuries and their consequences.</li><li>Promote safe, healthy, and accessible physical environments.</li></ul></p>";
+
+arrPopup[1]  = "<p class='popupH'>Global Health Protection</p><p>Americans at home and abroad are protected from health threats through CDC’s transnational prevention, detection, and response network.</p><p>CDC protects Americans from these threats by preventing, detecting, responding to, and containing health threats globally.</p>";
+
+arrPopup[2]  = "<p class='popupH'>Global Health Diplomacy</p><p>CDC and the United States Government strive to be a trusted and effective resource for health development and health protection around the globe.</p><p>CDC works globally to:</p><p><ul><li>Support achievement of international and national goals for the acceleration of control, and the eradication and elimination of diseases.</li><li>Develop sustainable public health capacity among partner organizations and governments.</li><li>Prevent maternal morbidity and mortality globally.</li><li>Improve the response to natural and manmade disasters, including complex humanitarian emergencies.</li></ul></p>";
+
+
+</script>
+</head>
+
+<body onload="MM_preloadImages('../sysimages/close_2.jpg');">
+<div id="noGraphicPopupText">
+  <p class="popupH"></p>
+  <script language="javascript" type="text/javascript" >
+	document.getElementById('noGraphicPopupText').innerHTML=arrPopup[gDef-1];
+</script>
+  <div class="CloseButton">
+    <div align="center"><a href="javascript:self.close();" onClick="javascript:self.close();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CButton','','../sysimages/close_2.jpg',1)"><img src="../sysimages/close_0.jpg" alt="Close Button" name="CButton" width="82" height="37" border="0" id="CButton" /></a></div>
+  </div>
+</div>
+</body>
+</html>

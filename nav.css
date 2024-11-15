@@ -1,0 +1,197 @@
+/* NRC css */
+/* all the font classes follow p and start with .nameOftheClass */
+/* all the font ID start with #nameOftheID*/
+
+
+/* basic elements */
+body {
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	font-size: 13px;
+	background: url(sysimages/background_lessonscreen.jpg) no-repeat top left;
+	bgcolor: #000000;
+	margin: 0px;
+	color: #000000;
+	letter-spacing: 0px;
+	line-height: 110%;
+
+	}
+a:link {
+	color:#284DFD;
+	font-weight: bold;
+	text-decoration: none;
+	}
+a:visited {
+	color:#7F92E8;
+	font-weight: bold;
+	text-decoration: none;
+	}
+a:hover {
+	text-decoration: underline;
+	color:#220df8;
+	}
+a:active {
+	text-decoration: none;
+	color: #220df8;
+	}
+
+a.dlink {
+	color:#220df8;
+	font-weight: bold;
+	text-decoration: underline;
+	}
+a.dlink:visited {
+	color:#054EAC;
+	font-weight: bold;
+	text-decoration: underline;
+	}
+
+.drill {
+	margin-top: 2px;
+	margin-bottom: 0px;
+}
+
+p {
+	text-align: left;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	}
+	
+ul {
+	margin-left: 35px;
+	margin-top: 5px;
+	margin-bottom: 0px;
+	padding: 0px;
+	list-style-type: disc;
+	/*list-style-image: url(sysimages/Bullet.gif);*/
+	}
+
+ol {
+	margin-left: 35px;
+	margin-top: 5px;
+	padding: 0px;
+
+	}
+
+li {
+	padding-top: 2px; 
+	margin-bottom: 1pt;
+	
+	}
+
+#MainMenu {
+	position:absolute; 
+	top:165px; 
+	left:0; 
+	width:103px; 
+	height:41px; 
+	z-index:1;
+}
+
+#Glossary {
+	position:absolute;
+	left:0;
+	top:204px; 
+	width:103px; 
+	height:41px; 
+	z-index:1;
+}
+
+#Help {
+	position:absolute;
+	left:0;
+	top:243px; 
+	width:103px; 
+	height:41px; 
+	z-index:1;
+}
+
+#Exit {
+	position:absolute;
+	left:0;
+	top:282px; 
+	width:103px; 
+	height:41px; 
+	z-index:1;
+}
+
+#Back {
+	position:absolute;
+	left:804px;
+	top:543px; 
+	width:35px; 
+	height:50px; 
+	z-index:1;
+}
+
+#Next {
+	position:absolute;
+	left:910px;
+	top:527px;
+	width:31px;
+	height:35px;
+	z-index:1;
+}
+
+#Repeat {
+	position:absolute;
+	left:854px;
+	top:538px; 
+	width:47px; 
+	height:1px; 
+	z-index:1;
+}
+
+#TopicH {
+	position:absolute;
+	left:40px;
+	top:11px;
+	color: #FFFFFF;
+	font-size: 13px;
+	font-weight: normal;
+	width:690px;
+	height:18.75pt;
+	z-index:1;
+}
+
+#pageN {
+	position:absolute; 
+	left:818px;
+	top:12px;
+	color:#F1B245;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: right;
+	width:150px; 
+	height:5; 
+	z-index:1;
+}
+
+#Prompt {
+	position:absolute;
+	left:393px;
+	top:545px;
+	text-align: center;
+	font-size: 13px;
+	font-weight: bold;
+	color:#fdb60c;
+	width:365px;
+	height:39px;
+	z-index:1;
+	line-height: 1.1;
+}
+
+.topicH { 
+	font-size: 18px;
+	font-weight: normal;  
+	letter-spacing: 0px;
+	line-height: 24px; 
+	color:#F1B245;
+	margin-top: 0px;
+	margin-bottom: 18px;
+}
+
+.distrText {
+	text-align: left;
+	margin: 1px;
+	font-size: 13px;
+}

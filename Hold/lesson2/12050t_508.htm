@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><!-- InstanceBegin template="/Templates/grid_checkboxes.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>CDC Supervisor Development Challenge WBT Precourse</title>
+<!-- InstanceEndEditable -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" type="text/css" href="../neo_m01.css" title = "neoCSS">
+
+<script language="JavaScript" type="text/JavaScript" src="../scripts/APIWrapper.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/SCOFunctions.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+
+<!-- InstanceBeginEditable name="EditTur" -->
+<script language="JavaScript">
+
+</script>
+<!-- InstanceEndEditable -->
+<script language="javascript">
+if (typeof(blnTut) == "undefined")  {
+	initializePage();
+}
+
+function popConfirm(){
+	if (confirm("Do you wish to exit the course?")==true) exitCourse(true);
+}
+
+</script>
+<!-- InstanceBeginEditable name="EditScript" -->
+<style>
+.gridStyle {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:0 1px 1px 0; 
+}
+.gridTop {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:1px 1px 1px 0; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight:bold;
+	text-align:center;
+}
+.gridLeft {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:0 1px 1px 1px; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+.gridFirstSell {
+	border-style:solid; 
+	border-color:#000000; 
+	border-collapse:collapse;
+	border-width:1px 1px 1px 1px; 
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight:bold;
+}
+#Content {
+	position:absolute; 
+	width:810px; 
+	height:40px;
+}
+</style>
+
+<script language="JavaScript">
+<!--
+function onpage() {
+}
+
+MM_reloadPage(true);
+function findNext() {
+	var NextPage = "12060.htm"
+	goNext (NextPage);
+}
+function findBack() {
+	var BackPage = "12040.htm"
+	goNext (BackPage);
+}
+
+
+// Set the message for the alert box for review the source
+am = "This function is disabled!";
+
+// do not edit below this line
+// ===========================
+bV  = parseInt(navigator.appVersion)
+bNS = navigator.appName=="Netscape"
+bIE = navigator.appName=="Microsoft Internet Explorer"
+
+function fs(e) {
+   if (bNS && e.which > 1){
+      alert(am)
+      return false
+   } else if (bIE && (event.button >1)) {
+     alert(am)
+     return false;
+   }
+}
+
+document.onmousedown = fs;
+if (document.layers) window.captureEvents(Event.MOUSEDOWN);
+if (bNS && bV<5) window.onmousedown = fs;
+
+// the following functions work for IE 4+ only
+//Question variables:
+var nItems = 8;
+var blnChoiceMade = false;
+distracters = new Array(nItems);
+var triesUser = 0;
+var qStatus = 0;	//question status. 1=correct, 0=incorrect
+var strCorrectAns = "0,1,1,0,0,1,1,1"
+arrCorrectAns = new Array(nItems);
+arrCorrectAns = strCorrectAns.split(",")
+userAns = new Array(nItems);
+var PtriesLimit = 2;	
+
+//pass feedback
+var FbNoneCorrect = "1" //"Incorrect. 
+var FbSomeCorrect = "2"
+var FbNoAnswer = "3" //not selected;
+var FbAllCorrect = "4" //"Correct! 
+var FbFinalIncorrect = "5" // 2nd Incorrect. 
+
+//==============
+//function for judge the question
+function judgeInteraction() {
+if (triesUser < PtriesLimit) {
+	var strTemp
+	strTemp = ""
+	fmDistracter=document.forms[0].fmDistracter
+	for (var i=0; i<nItems; i++) {
+		if(fmDistracter[i].checked) {
+			strTemp = strTemp + "1,";
+		} else {
+			strTemp = strTemp + "0,";
+		}
+	}
+	userAns = strTemp.split(",")
+
+	var unChecked = 0;
+	var nCorrect = 0;
+	var nIncorrect = 0;
+	var nChecksMatched = 0;
+	for (i=0; i<nItems; i++) {
+		if (userAns[i] == 0) unChecked += 1;
+		if (userAns[i] == arrCorrectAns[i]) nCorrect += 1
+		
+		if ((arrCorrectAns[i] == 1) && (userAns[i] == arrCorrectAns[i]))
+			nChecksMatched += 1
+	}
+
+	if (unChecked == nItems) {
+		//No answer selected
+		strTemp = FbNoAnswer
+	} else {
+		triesUser += 1;
+		if (nCorrect == nItems) {
+			for (i=0; i<nItems; i++) {
+				if (arrCorrectAns [i]==1) {
+					fmDistracter[i].checked = true
+				}else{
+					fmDistracter[i].checked = false
+				}
+			}
+				
+			//Correct answers
+			strTemp = FbAllCorrect;
+			triesUser = PtriesLimit;
+			for (i=0;i<nItems; i++) fmDistracter[i].disabled = "disabled";
+			document.getElementById('DoneButton').disabled = "disabled"
+		} else {
+			//second try
+			//document.getElementById('feedback').style.top = 180;
+			if (triesUser == PtriesLimit) {
+				for (i=0; i<nItems; i++) {
+					if (arrCorrectAns [i]==1) {
+						fmDistracter[i].checked = true
+					}else{
+						fmDistracter[i].checked = false
+					}
+				}
+				strTemp = FbFinalIncorrect
+				for (i=0;i<nItems; i++) fmDistracter[i].disabled = "disabled";
+				document.getElementById('DoneButton').disabled = "disabled"
+			} else  { //1st try wrong
+				if (nChecksMatched == 0){ //1st try wrong
+				//non correct
+					strTemp = FbNoneCorrect;
+				} else {
+				//some correct
+					strTemp = FbSomeCorrect;
+				}
+			}	
+		}
+	}
+		transTerm(strTemp);
+	}
+}
+
+//-->
+</script>
+<!-- InstanceEndEditable -->
+
+</head>
+
+<body onLoad=" onpage();  MM_preloadImages('../sysimages/background.jpg','../sysimages/exit_2.jpg','../sysimages/glossary_2.jpg')" onUnload="if (closing) exitCourse(false)" >
+<div id="TopicH" ><!-- InstanceBeginEditable name="EditModuleT" --><b>CDC Culture:</b> CDC Mission and Values<!-- InstanceEndEditable --></div>
+<div id="pageN"><!-- InstanceBeginEditable name="EditPageN" -->Page 5 of 11<!-- InstanceEndEditable --></div>
+<div id="Content" ><!-- InstanceBeginEditable name="EditContents" --> <p class="topicH">Orientation  Check Point</p>
+<p>Which of the following are the five promises included in the CDC pledge?</p>
+
+  <form name="form1" method="post" action="">
+  <table width="718" border="0" cellpadding="4" cellspacing="0">
+    <tr >
+      <td width="542" align='center' class='gridFirstSell'><strong>Possible Promises </strong></td>
+      <td width="160" class='gridTop'>&nbsp;</td>
+      </tr>
+    <tr>
+      <td class='gridLeft'>Ensure that their research and services are based on sound science</td>
+      <td align="center" class='gridStyle'><input type="checkbox" name="fmDistracter" tabindex="1" alt="">  </td>
+      </tr>
+    <tr>
+      <td class='gridLeft'>Provide an environment for intellectual and personal growth and integrity</td>
+      <td align="center" class='gridStyle'><input type="checkbox" name="fmDistracter" tabindex="2" alt="">  </td>
+      </tr>
+    <tr>
+      <td class='gridLeft'>Base all public health decisions on the highest quality scientific data, openly and objectively derived</td>
+      <td align="center" class='gridStyle'><input type="checkbox" name="fmDistracter" tabindex="3" alt="">  </td>
+      </tr>
+    <tr>
+      <td class='gridLeft'>Prize scientific integrity and professional excellence</td>
+      <td align="center" class='gridStyle'><input type="checkbox" name="fmDistracter" tabindex="4" alt=""></td>
+      </tr>
+
+    <tr>
+      <td class='gridLeft'>Understand the interdependence with all people inside the agency</td>
+      <td align="center" class='gridStyle'><input type="checkbox" name="fmDistracter" tabindex="5" alt=""></td>
+      </tr>
+
+    <tr>
+      <td class='gridLeft'>Place the benefits to society above the benefits to the institution</td>
+      <td align="center" class='gridStyle'><input type="checkbox" name="fmDistracter" tabindex="6" alt=""></td>
+      </tr>
+
+    <tr>
+      <td class='gridLeft'>Treat all persons with dignity, honesty, and respect</td>
+      <td align="center" class='gridStyle'><input type="checkbox" name="fmDistracter" tabindex="7" alt=""></td>
+      </tr>
+
+    <tr>
+      <td class='gridLeft'>Be diligent stewards of the funds entrusted to them</td>
+      <td align="center" class='gridStyle'><input type="checkbox" name="fmDistracter" tabindex="8" alt=""></td>
+      </tr>
+  </table>  
+  </form>
+<div id="lyDone" style="position:absolute; top:379px; left:313px">
+  <a href="#" onClick="judgeInteraction()" onMouseOut="MM_swapImage('DoneButton','','../sysimages/done_0.jpg',1)" onMouseOver="MM_swapImage('DoneButton','','../sysimages/done_2.jpg',1)"><img src="../sysimages/done_0.jpg" alt="Done button" id="DoneButton" name="DoneButton" width="82" height="37" border="0"></a>  </div>
+<!-- InstanceEndEditable --></div>
+
+
+<!-- InstanceBeginEditable name="EditaddGraphic" -->
+
+<!-- InstanceEndEditable -->
+
+
+<div id="Prompt"><!-- InstanceBeginEditable name="EditPrompt" -->Select all that apply, then click Done.<!-- InstanceEndEditable --></div>
+
+<div id="Next"><a href="javascript:findNext();" onMouseOver="MM_swapImage('btnNext','','../sysimages/next_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/next_0.jpg" alt="Goes to next page" name="btnNext" width="36" height="71" border="0" id="btnNext"></a></div> 
+
+<div id="Repeat" ><a href="javascript:refresh()"  onMouseOver="MM_swapImage('btnRepeat','','../sysimages/refresh_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/refresh_0.jpg" alt="Replays the current page" name="btnRepeat" width="47" height="60" border="0" id="btnRepeat"></a></div>
+
+<div id="Back"><a href="javascript:findBack();" onMouseOver="MM_swapImage('btnBack','','../sysimages/back_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/back_0.jpg" alt="Goes to previous page" name="btnBack" width="32" height="55" border="0" id="btnBack"></a></div>
+
+<div id="MainMenu" ><a href="javascript:toMenu(false)"  onMouseOver="MM_swapImage('btnmain','','../sysimages/mainmenu_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/mainmenu_0.jpg" alt="Main Menu" name="btnmain" width="103" height="41" border="0" id="btnmain"></a></div>
+
+<div id="Glossary"><a href="javascript:openGlossary()"  onMouseOver="MM_swapImage('btnglossary','','../sysimages/glossary_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/glossary_0.jpg" alt="Opens a glossary screen" name="btnglossary" width="103" height="41" border="0" id="btnglossary"></a></div>
+
+<div id="Help"><a href="javascript:openHelp();"  onMouseOver="MM_swapImage('btnHelp','','../sysimages/help_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/help_0.jpg" alt="Help" name="btnHelp" width="103" height="41" border="0" id="btnHelp"></a></div>
+
+<div id="Exit"><a href="javascript:popConfirm();"  onMouseOver="MM_swapImage('btnexit','','../sysimages/exit_2.jpg',1)" onMouseOut="MM_swapImgRestore()"><img src="../sysimages/exit_0.jpg" alt="Exit" name="btnexit" width="103" height="41" border="0" id="btnexit"></a></div>
+
+
+<!-- InstanceBeginEditable name="JSControl" -->
+
+<!-- InstanceEndEditable -->
+
+</body>
+<!-- InstanceEnd --></html>

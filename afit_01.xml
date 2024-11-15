@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+<lom xmlns="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xsi:schemaLocation="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd">
+
+   <general>
+      <title>
+         <langstring>
+            NEO - CDC New Employee Orientation
+         </langstring>
+      </title>
+      <catalogentry>
+         <catalog>CDC New Employee Orientation</catalog>
+         <entry>
+            <langstring>CDC New Employee Orientation</langstring>
+         </entry>
+      </catalogentry>
+      <language>en-US</language>
+      <description>
+         <langstring>
+The users of this course will learn about the Department of Health and Human Services (HHS); discover the CDC vision, mission, pledge, and core values;  review the CDC health protection goals;  examine the basics of CDC Partnerships and how the CDC works with partners in the U.S. to accomplish its mission; and explore CDC’s Global Health Partnerships.
+         </langstring>
+      </description>
+      <keyword>
+         <langstring>Centers for Disease Control and Prevention</langstring>
+      </keyword>
+      <keyword>
+         <langstring>Department of Health and Human Services</langstring>
+      </keyword>
+      <keyword>
+         <langstring>CDC health protection goals</langstring>
+      </keyword>
+      <keyword>
+         <langstring>CDC Partnerships</langstring>
+      </keyword>
+      <keyword>
+         <langstring>CDC’s Global Health Partnerships</langstring>
+      </keyword>
+   </general>
+   
+   <lifecycle>
+      <version>
+         <langstring>1.0</langstring>
+      </version>
+      <status>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">Draft</langstring>
+         </value>
+      </status>
+      <contribute>
+         <role>
+            <source>
+               <langstring xml:lang="x-none">LOMv1.0</langstring>
+            </source>
+            <value>
+               <langstring xml:lang="x-none">Author</langstring>
+            </value>
+         </role>
+         <centity>
+            <vcard>
+BEGIN:vCard 
+ORG:C2 Technologies, Inc.
+END:vCard
+            </vcard>
+         </centity>
+         <date>
+            <datetime>2008-1-31</datetime>
+         </date>
+      </contribute>
+   </lifecycle>
+   
+   <metametadata>
+      <metadatascheme>ADL SCORM(TM) 1.2</metadatascheme>
+   </metametadata>
+   
+   <technical>
+      <format>text/html</format>
+      <size>4582</size>
+      <location type="URI">CDC</location>
+      <requirement>
+         <type>
+            <source>
+               <langstring xml:lang="x-none">LOMv1.0</langstring>
+            </source>
+            <value>
+               <langstring xml:lang="x-none">Browser</langstring>
+            </value>
+         </type>
+         <name>
+            <source>
+               <langstring xml:lang="x-none">LOMv1.0</langstring>
+            </source>
+            <value>
+               <langstring xml:lang="x-none">Microsoft Internet Explorer</langstring>
+            </value>
+         </name>
+         <minimumversion>6.0</minimumversion>
+      </requirement>
+   </technical>
+   
+   <educational>
+      <learningresourcetype>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">Narrative Text</langstring>
+         </value>
+      </learningresourcetype>
+      <typicallearningtime>
+         <datetime>1:00:00</datetime>
+      </typicallearningtime>
+   </educational>
+   
+   <rights>
+      <cost>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">no</langstring>
+         </value>
+      </cost>
+      <copyrightandotherrestrictions>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">no</langstring>
+         </value>
+      </copyrightandotherrestrictions>
+   </rights>
+   
+   <classification>
+      <purpose>
+         <source>
+            <langstring xml:lang="x-none">LOMv1.0</langstring>
+         </source>
+         <value>
+            <langstring xml:lang="x-none">Discipline</langstring>
+         </value>
+      </purpose>
+      <description>
+         <langstring>
+Users of this course will learn about the Department of Health and Human Services (HHS); discover the CDC vision, mission, pledge, and core values;  review the CDC health protection goals;  examine the basics of CDC Partnerships and how the CDC works with partners in the U.S. to accomplish its mission; and explore CDC’s Global Health Partnerships.
+         </langstring>
+      </description>
+      <keyword>
+         <langstring>Centers for Disease Control and Prevention</langstring>
+      </keyword>
+      <keyword>
+         <langstring>Department of Health and Human Services</langstring>
+      </keyword>
+      <keyword>
+         <langstring>CDC health protection goals</langstring>
+      </keyword>
+      <keyword>
+         <langstring>CDC Partnerships</langstring>
+      </keyword>
+      <keyword>
+         <langstring>CDC’s Global Health Partnerships</langstring>
+      </keyword>
+   </classification>
+</lom>

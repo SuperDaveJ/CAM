@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Popup Information</title>
+<link href="../cdcpopup.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" type="text/JavaScript" src="../scripts/access.js"></script>
+<script language="JavaScript" type="text/JavaScript" src="../scripts/neo_module01.js"></script>
+<script type="text/JavaScript">
+
+var gDef = getQueryValue('popterm')
+var arrPopup = new Array();
+var numTern = 6;
+for (var i=0; i<numTern; i++) {
+	arrPopup[i] = "";
+}
+
+arrPopup[0]  = "<p class='popupH'>Health Impact Focused</p><p>CDC is a health impact focused organization. This means that the CDC's staff, strategies, goals, investments, and performance have all been aligned to maximize the impact on the population's health and safety.</p>";
+
+arrPopup[1]  = "<p class='popupH'>Customer-centricity</p><p>CDC strives to achieve customer-centricity, which means CDC must market the things that people want and need to choose good health.</p>";
+
+arrPopup[2]  = "<p class='popupH'>Public Health Research</p><p>CDC creates and disseminates public health research, knowledge, and innovations that people need to protect their health now and in the future.</p>";
+
+arrPopup[3]  = "<p class='popupH'>Leadership</p><p>CDC uses its leverage, unique expertise, partnerships, and networks to improve the health system through leadership.</p>";
+
+arrPopup[4]  = "<p class='popupH'>Globalization</p><p>The organization uses its knowledge and tools to promote health protection around the world.</p>";
+
+arrPopup[5]  = "<p class='popupH'>Accountability</p><p>CDC seeks to be accountable by sustaining people's trust and confidence and making the most efficient and effective use of their investments.</p>";
+
+
+</script>
+</head>
+
+<body onload="MM_preloadImages('../sysimages/close_2.jpg');">
+<div id="noGraphicPopupText">
+  <p class="popupH"></p>
+  <script language="javascript" type="text/javascript" >
+	document.getElementById('noGraphicPopupText').innerHTML=arrPopup[gDef-1];
+</script>
+  <div class="CloseButton">
+    <div align="center"><a href="javascript:self.close();" onClick="javascript:self.close();" onmouseout="MM_swapImgRestore()" onmouseover="MM_swapImage('CButton','','../sysimages/close_2.jpg',1)"><img src="../sysimages/close_0.jpg" alt="Close Button" name="CButton" width="82" height="37" border="0" id="CButton" /></a></div>
+  </div>
+</div>
+</body>
+</html>
